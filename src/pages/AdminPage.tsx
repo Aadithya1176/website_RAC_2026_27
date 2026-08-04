@@ -375,7 +375,7 @@ const AdminPage = () => {
 
   if (!isAuthenticated) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-primary to-accent flex items-center justify-center p-4">
+      <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-brand-900 via-brand to-brand-400 p-4">
         <motion.div
           className="bg-white rounded-lg shadow-2xl p-8 w-full max-w-md"
           initial={{ opacity: 0, scale: 0.9 }}
@@ -392,13 +392,13 @@ const AdminPage = () => {
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition"
+                className="w-full rounded-xl border border-slate-200 px-4 py-2 outline-none transition focus:border-brand-200 focus:ring-2 focus:ring-brand-100"
                 placeholder="Enter admin password"
               />
             </div>
             <button
               type="submit"
-              className="w-full bg-primary hover:bg-primary/90 text-white font-semibold py-2 rounded-lg transition duration-200"
+              className="w-full rounded-xl bg-brand py-2 font-semibold text-white transition duration-200 hover:bg-brand-700"
             >
               Login
             </button>
@@ -411,7 +411,7 @@ const AdminPage = () => {
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-      <div className="bg-white shadow-md sticky top-0 z-50">
+      <div className="sticky top-0 z-50 bg-white shadow-sm shadow-brand-950/5">
         <div className="container-custom py-4 flex justify-between items-center">
           <h1 className="text-2xl font-bold text-text-dark">Admin Dashboard</h1>
           <button
@@ -446,7 +446,7 @@ const AdminPage = () => {
               fetchProjects();
             }}
             className={`px-6 py-3 font-semibold transition ${activeTab === 'projects'
-              ? 'text-primary border-b-2 border-primary'
+              ? 'text-brand border-b-2 border-brand'
               : 'text-gray-600 hover:text-text-dark'
               }`}
           >
@@ -458,7 +458,7 @@ const AdminPage = () => {
               fetchGallery();
             }}
             className={`px-6 py-3 font-semibold transition ${activeTab === 'gallery'
-              ? 'text-primary border-b-2 border-primary'
+              ? 'text-brand border-b-2 border-brand'
               : 'text-gray-600 hover:text-text-dark'
               }`}
           >
@@ -476,7 +476,7 @@ const AdminPage = () => {
                   resetForm();
                   setShowForm(true);
                 }}
-                className="flex items-center gap-2 bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-lg font-semibold mb-8 transition"
+                className="mb-8 flex items-center gap-2 rounded-xl bg-brand px-6 py-3 font-semibold text-white transition hover:bg-brand-700"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -496,7 +496,7 @@ const AdminPage = () => {
                   resetGalleryForm();
                   setShowGalleryForm(true);
                 }}
-                className="flex items-center gap-2 bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-lg font-semibold mb-8 transition"
+                className="mb-8 flex items-center gap-2 rounded-xl bg-brand px-6 py-3 font-semibold text-white transition hover:bg-brand-700"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -522,7 +522,7 @@ const AdminPage = () => {
                       value={galleryTitle}
                       onChange={(e) => setGalleryTitle(e.target.value)}
                       placeholder="Enter image title"
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                      className="w-full rounded-xl border border-slate-200 px-4 py-2 focus:border-brand-200 focus:ring-2 focus:ring-brand-100"
                     />
                   </div>
 
@@ -534,7 +534,7 @@ const AdminPage = () => {
                       type="number"
                       value={galleryImageWidth}
                       onChange={(e) => setGalleryImageWidth(Number(e.target.value))}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                      className="w-full rounded-xl border border-slate-200 px-4 py-2 focus:border-brand-200 focus:ring-2 focus:ring-brand-100"
                     />
                   </div>
 
@@ -546,7 +546,7 @@ const AdminPage = () => {
                       type="number"
                       value={galleryImageHeight}
                       onChange={(e) => setGalleryImageHeight(Number(e.target.value))}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                      className="w-full rounded-xl border border-slate-200 px-4 py-2 focus:border-brand-200 focus:ring-2 focus:ring-brand-100"
                     />
                   </div>
 
@@ -577,7 +577,7 @@ const AdminPage = () => {
                     <button
                       type="submit"
                       disabled={loading}
-                      className="flex-1 bg-primary hover:bg-primary/90 text-white font-semibold py-2 rounded-lg transition disabled:opacity-50"
+                      className="flex-1 rounded-xl bg-brand py-2 font-semibold text-white transition hover:bg-brand-700 disabled:opacity-50"
                     >
                       {loading ? 'Uploading...' : 'Upload Image'}
                     </button>
@@ -652,7 +652,7 @@ const AdminPage = () => {
                         value={formData.title || ''}
                         onChange={handleInputChange}
                         required
-                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none"
+                        className="w-full rounded-xl border border-slate-200 px-4 py-2 outline-none focus:border-brand-200 focus:ring-2 focus:ring-brand-100"
                         placeholder="Enter project title"
                       />
                     </div>
@@ -665,7 +665,7 @@ const AdminPage = () => {
                         value={formData.avenue || 'community'}
                         onChange={handleInputChange}
                         required
-                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none"
+                        className="w-full rounded-xl border border-slate-200 px-4 py-2 outline-none focus:border-brand-200 focus:ring-2 focus:ring-brand-100"
                       >
                         <option value="club">Club Service</option>
                         <option value="community">Community Service</option>
@@ -700,7 +700,7 @@ const AdminPage = () => {
                           }
                         }}
                         required
-                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none"
+                        className="w-full rounded-xl border border-slate-200 px-4 py-2 outline-none focus:border-brand-200 focus:ring-2 focus:ring-brand-100"
                       />
                     </div>
                     <div>
@@ -713,19 +713,19 @@ const AdminPage = () => {
                         value={formData.venue || ''}
                         onChange={handleInputChange}
                         required
-                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none"
+                        className="w-full rounded-xl border border-slate-200 px-4 py-2 outline-none focus:border-brand-200 focus:ring-2 focus:ring-brand-100"
                         placeholder="Enter venue"
                       />
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-4 p-4 bg-blue-50 rounded-lg border border-blue-200">
+                  <div className="flex items-center gap-4 rounded-xl border border-brand-100 bg-brand-50 p-4">
                     <input
                       type="checkbox"
                       name="isSignature"
                       checked={formData.isSignature || false}
                       onChange={handleInputChange}
-                      className="w-5 h-5 text-primary rounded focus:ring-2 focus:ring-primary cursor-pointer"
+                      className="h-5 w-5 cursor-pointer rounded text-brand focus:ring-2 focus:ring-brand-200"
                     />
                     <label className="text-sm font-medium text-gray-700 cursor-pointer">
                       Mark as Signature Project
@@ -742,7 +742,7 @@ const AdminPage = () => {
                       value={formData.oneLiner || ''}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none"
+                      className="w-full rounded-xl border border-slate-200 px-4 py-2 outline-none focus:border-brand-200 focus:ring-2 focus:ring-brand-100"
                       placeholder="Enter a short one-liner for the project card"
                     />
                   </div>
@@ -757,7 +757,7 @@ const AdminPage = () => {
                       onChange={handleInputChange}
                       required
                       rows={4}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none"
+                      className="w-full rounded-xl border border-slate-200 px-4 py-2 outline-none focus:border-brand-200 focus:ring-2 focus:ring-brand-100"
                       placeholder="Enter full project description"
                     />
                   </div>
@@ -771,7 +771,7 @@ const AdminPage = () => {
                         type="file"
                         accept="image/*"
                         onChange={handleImageChange}
-                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none"
+                        className="w-full rounded-xl border border-slate-200 px-4 py-2 outline-none focus:border-brand-200 focus:ring-2 focus:ring-brand-100"
                       />
                       {imagePreview && (
                         <div className="relative w-full h-48 rounded-lg overflow-hidden border border-gray-300">
@@ -796,7 +796,7 @@ const AdminPage = () => {
                       name="status"
                       value={formData.status || 'active'}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none"
+                      className="w-full rounded-xl border border-slate-200 px-4 py-2 outline-none focus:border-brand-200 focus:ring-2 focus:ring-brand-100"
                     >
                       <option value="active">Active</option>
                       <option value="inactive">Inactive</option>
@@ -807,7 +807,7 @@ const AdminPage = () => {
                     <button
                       type="submit"
                       disabled={loading}
-                      className="flex-1 bg-primary hover:bg-primary/90 text-white font-semibold py-2 rounded-lg transition disabled:opacity-50"
+                      className="flex-1 rounded-xl bg-brand py-2 font-semibold text-white transition hover:bg-brand-700 disabled:opacity-50"
                     >
                       {loading ? 'Saving...' : editingId ? 'Update Project' : 'Add Project'}
                     </button>
@@ -853,11 +853,11 @@ const AdminPage = () => {
                           <div className="flex-1">
                             <h3 className="text-lg font-bold text-text-dark">{project.title}</h3>
                             <div className="flex flex-wrap gap-2 mt-2">
-                              <span className="px-2 py-1 rounded text-xs font-semibold bg-purple-100 text-purple-800">
+                              <span className="rounded-full bg-brand-50 px-2 py-1 text-xs font-semibold text-brand-700">
                                 {project.avenue}
                               </span>
                               {project.isSignature && (
-                                <span className="px-2 py-1 rounded text-xs font-semibold bg-yellow-100 text-yellow-800">
+                                <span className="rounded-full bg-brand-100 px-2 py-1 text-xs font-semibold text-brand-800">
                                   ⭐ Signature
                                 </span>
                               )}
@@ -868,7 +868,7 @@ const AdminPage = () => {
                         <div className="flex gap-2">
                           <button
                             onClick={() => handleEdit(project)}
-                            className="flex-1 flex items-center justify-center gap-2 bg-blue-500 hover:bg-blue-600 text-white py-2 rounded transition"
+                            className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-brand py-2 text-white transition hover:bg-brand-700"
                           >
                             <FiEdit2 size={16} /> Edit
                           </button>

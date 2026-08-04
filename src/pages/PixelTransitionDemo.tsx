@@ -77,7 +77,7 @@ const PixelTransitionDemo = () => {
               {/* Pixel Size */}
               <div className="mb-8">
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Pixel Size: <span className="text-primary font-bold">{pixelSize}px</span>
+                  Pixel Size: <span className="text-brand font-bold">{pixelSize}px</span>
                 </label>
                 <input
                   type="range"
@@ -96,7 +96,7 @@ const PixelTransitionDemo = () => {
               {/* Duration */}
               <div className="mb-6">
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Duration: <span className="text-primary font-bold">{duration.toFixed(1)}s</span>
+                  Duration: <span className="text-brand font-bold">{duration.toFixed(1)}s</span>
                 </label>
                 <input
                   type="range"

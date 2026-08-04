@@ -85,8 +85,8 @@ const AboutUsPage = () => {
                                 {/* Image container */}
                                 <div className="w-full lg:w-1/2">
                                     <div className="relative group">
-                                        <div className="absolute -inset-4 bg-primary/20 blur-2xl group-hover:bg-primary/30 transition-all duration-700 rounded-[2rem]"></div>
-                                        <div className={`relative bg-white/80 backdrop-blur-md ${section.title === "Rotaract Club of REC" ? 'p-2' : 'p-8'} rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.1)] border border-white/20 transition-all duration-500 group-hover:scale-[1.03] group-hover:shadow-primary/20`}>
+                                        <div className="absolute -inset-4 rounded-[2rem] bg-brand/10 blur-2xl transition-all duration-700 group-hover:bg-brand/20"></div>
+                                        <div className={`relative rounded-2xl border border-white/40 bg-white/85 backdrop-blur-md ${section.title === "Rotaract Club of REC" ? 'p-2' : 'p-8'} shadow-[0_20px_50px_rgba(2,80,99,0.08)] transition-all duration-500 group-hover:scale-[1.03] group-hover:shadow-brand/10`}>
                                             <img
                                                 src={section.image}
                                                 alt={section.title}
@@ -100,7 +100,7 @@ const AboutUsPage = () => {
                                 <div className="w-full lg:w-1/2">
                                     <h2 className="text-4xl md:text-5xl font-bold text-text-dark mb-8 tracking-tight relative inline-block">
                                         {section.title}
-                                        <div className="absolute -bottom-2 left-0 w-12 h-1 bg-primary rounded-full"></div>
+                                        <div className="absolute -bottom-2 left-0 h-1 w-12 rounded-full bg-brand"></div>
                                     </h2>
                                     <div className="text-gray-700 text-lg leading-relaxed space-y-6 font-medium">
                                         {section.content}
@@ -110,7 +110,7 @@ const AboutUsPage = () => {
                                             href={section.link}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="inline-flex items-center space-x-3 bg-primary text-white px-8 py-4 rounded-full font-bold hover:bg-secondary hover:shadow-2xl hover:shadow-primary/40 transition-all duration-300 group shadow-xl shadow-primary/20"
+                                            className="group inline-flex items-center space-x-3 rounded-full bg-brand px-8 py-4 font-bold text-white shadow-xl shadow-brand/20 transition-all duration-300 hover:bg-brand-700 hover:shadow-2xl hover:shadow-brand/30"
                                         >
                                             <span>{section.linkText}</span>
                                             <FiExternalLink className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />

@@ -126,7 +126,7 @@ const JoinUsPage = () => {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
               >
-                <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-brand">
                   <benefit.icon className="w-8 h-8 text-white" />
                 </div>
                 <h3 className="text-xl font-bold text-text-dark mb-3">{benefit.title}</h3>
@@ -138,7 +138,7 @@ const JoinUsPage = () => {
       </section>
 
       {/* Application Form */}
-      <section className="section-padding bg-background">
+      <section className="section-padding bg-brand-50">
         <div className="container-custom">
           <motion.div
             className="text-center mb-16"
@@ -160,7 +160,7 @@ const JoinUsPage = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <form onSubmit={handleSubmit} className="bg-white p-8 rounded-lg shadow-lg">
+            <form onSubmit={handleSubmit} className="rounded-2xl border border-border bg-white p-8 shadow-sm shadow-brand-950/5">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -172,7 +172,7 @@ const JoinUsPage = () => {
                     value={formData.name}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                    className="w-full rounded-xl border border-slate-200 px-4 py-3 focus:border-brand-200 focus:ring-2 focus:ring-brand-100"
                   />
                 </div>
                 <div>
@@ -185,7 +185,7 @@ const JoinUsPage = () => {
                     value={formData.email}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                    className="w-full rounded-xl border border-slate-200 px-4 py-3 focus:border-brand-200 focus:ring-2 focus:ring-brand-100"
                   />
                 </div>
                 <div>
@@ -197,7 +197,7 @@ const JoinUsPage = () => {
                     name="phone"
                     value={formData.phone}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                    className="w-full rounded-xl border border-slate-200 px-4 py-3 focus:border-brand-200 focus:ring-2 focus:ring-brand-100"
                   />
                 </div>
                 <div>
@@ -209,7 +209,7 @@ const JoinUsPage = () => {
                     value={formData.department}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                    className="w-full rounded-xl border border-slate-200 px-4 py-3 focus:border-brand-200 focus:ring-2 focus:ring-brand-100"
                   >
                     <option value="">Select Department</option>
                     <option value="CSE">Computer Science Engineering</option>
@@ -229,7 +229,7 @@ const JoinUsPage = () => {
                     value={formData.year}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                    className="w-full rounded-xl border border-slate-200 px-4 py-3 focus:border-brand-200 focus:ring-2 focus:ring-brand-100"
                   >
                     <option value="">Select Year</option>
                     <option value="1">1st Year</option>
@@ -251,7 +251,7 @@ const JoinUsPage = () => {
                         type="checkbox"
                         checked={formData.interests.includes(interest)}
                         onChange={() => handleInterestChange(interest)}
-                        className="mr-2 text-primary focus:ring-primary"
+                        className="mr-2 rounded border-slate-300 text-brand focus:ring-brand-200"
                       />
                       <span className="text-sm text-gray-700">{interest}</span>
                     </label>
@@ -269,14 +269,14 @@ const JoinUsPage = () => {
                   onChange={handleInputChange}
                   required
                   rows={4}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                  className="w-full rounded-xl border border-slate-200 px-4 py-3 focus:border-brand-200 focus:ring-2 focus:ring-brand-100"
                   placeholder="Tell us about your motivation to join RACREC..."
                 />
               </div>
 
               <button
                 type="submit"
-                className="w-full bg-primary text-white py-4 rounded-lg font-semibold hover:bg-secondary transition-colors"
+                className="w-full rounded-xl bg-brand py-4 font-semibold text-white transition-colors hover:bg-brand-700"
               >
                 Submit Application
               </button>
@@ -309,7 +309,7 @@ const JoinUsPage = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
-              <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-brand">
                 <FiMail className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-xl font-bold text-text-dark mb-2">Email Us</h3>
@@ -323,7 +323,7 @@ const JoinUsPage = () => {
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
             >
-              <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-brand">
                 <FiPhone className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-xl font-bold text-text-dark mb-2">Call Us</h3>
@@ -337,7 +337,7 @@ const JoinUsPage = () => {
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
             >
-              <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-brand">
                 <FiMapPin className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-xl font-bold text-text-dark mb-2">Visit Us</h3>

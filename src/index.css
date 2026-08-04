@@ -6,6 +6,7 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    background-color: theme('colors.background');
   }
   
   body {
@@ -65,11 +66,11 @@ section, [role="region"] {
 
 @layer components {
   .btn-primary {
-    @apply bg-primary text-white px-6 py-3 rounded-lg font-semibold hover:bg-secondary transition-colors duration-300;
+    @apply inline-flex items-center justify-center rounded-xl bg-brand px-6 py-3 font-semibold text-white shadow-sm shadow-brand/20 transition-all duration-300 hover:-translate-y-0.5 hover:bg-brand-700 hover:shadow-lg hover:shadow-brand/25;
   }
   
   .btn-secondary {
-    @apply border-2 border-primary text-primary px-6 py-3 rounded-lg font-semibold hover:bg-primary hover:text-white transition-colors duration-300;
+    @apply inline-flex items-center justify-center rounded-xl border border-brand-200 bg-white px-6 py-3 font-semibold text-brand shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-300 hover:bg-brand-50 hover:text-brand-700;
   }
   
   .section-padding {
@@ -82,5 +83,17 @@ section, [role="region"] {
   
   .container-custom {
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .section-title {
+    @apply text-3xl font-bold text-text-dark md:text-4xl;
+  }
+
+  .section-kicker {
+    @apply text-sm font-semibold uppercase tracking-[0.18em] text-brand-600;
+  }
+
+  .card-surface {
+    @apply rounded-2xl border border-border bg-white shadow-sm shadow-slate-900/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-brand-100/40;
   }
 }

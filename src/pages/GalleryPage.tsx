@@ -71,7 +71,7 @@ const GalleryPage = () => {
       </section>
 
       {/* Gallery Grid */}
-      <section className="section-padding bg-background">
+      <section className="section-padding bg-brand-50">
         <div className="container-custom">
           <motion.div
             className="mb-8"
@@ -123,19 +123,19 @@ const GalleryPage = () => {
           >
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div>
-                <div className="text-3xl font-bold text-primary mb-2">
+                <div className="mb-2 text-3xl font-bold text-brand">
                   {photos.length}+
                 </div>
                 <p className="text-gray-600">Memorable Moments</p>
               </div>
               <div>
-                <div className="text-3xl font-bold text-accent mb-2">
+                <div className="mb-2 text-3xl font-bold text-brand-700">
                   {projectCount}+
                 </div>
                 <p className="text-gray-600">Events Captured</p>
               </div>
               <div>
-                <div className="text-3xl font-bold text-primary mb-2">
+                <div className="mb-2 text-3xl font-bold text-brand">
                   150+
                 </div>
                 <p className="text-gray-600">Smiles Shared</p>

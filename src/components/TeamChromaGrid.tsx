@@ -48,8 +48,8 @@ export const ChromaGrid: React.FC<ChromaGridProps> = ({
       title: 'Alex Rivera',
       subtitle: 'Full Stack Developer',
       handle: '@alexrivera',
-      borderColor: '#4F46E5',
-      gradient: 'linear-gradient(145deg, #4F46E5, #000)',
+      borderColor: '#025063',
+      gradient: 'linear-gradient(145deg, #025063, #041c24)',
       url: 'https://github.com/'
     },
     {
@@ -57,8 +57,8 @@ export const ChromaGrid: React.FC<ChromaGridProps> = ({
       title: 'Jordan Chen',
       subtitle: 'DevOps Engineer',
       handle: '@jordanchen',
-      borderColor: '#10B981',
-      gradient: 'linear-gradient(210deg, #10B981, #000)',
+      borderColor: '#347a8d',
+      gradient: 'linear-gradient(210deg, #347a8d, #041c24)',
       url: 'https://linkedin.com/in/'
     },
     {
@@ -66,8 +66,8 @@ export const ChromaGrid: React.FC<ChromaGridProps> = ({
       title: 'Morgan Blake',
       subtitle: 'UI/UX Designer',
       handle: '@morganblake',
-      borderColor: '#F59E0B',
-      gradient: 'linear-gradient(165deg, #F59E0B, #000)',
+      borderColor: '#5d9ead',
+      gradient: 'linear-gradient(165deg, #5d9ead, #041c24)',
       url: 'https://dribbble.com/'
     },
     {
@@ -75,8 +75,8 @@ export const ChromaGrid: React.FC<ChromaGridProps> = ({
       title: 'Casey Park',
       subtitle: 'Data Scientist',
       handle: '@caseypark',
-      borderColor: '#EF4444',
-      gradient: 'linear-gradient(195deg, #EF4444, #000)',
+      borderColor: '#014252',
+      gradient: 'linear-gradient(195deg, #014252, #041c24)',
       url: 'https://kaggle.com/'
     },
     {
@@ -84,8 +84,8 @@ export const ChromaGrid: React.FC<ChromaGridProps> = ({
       title: 'Sam Kim',
       subtitle: 'Mobile Developer',
       handle: '@thesamkim',
-      borderColor: '#8B5CF6',
-      gradient: 'linear-gradient(225deg, #8B5CF6, #000)',
+      borderColor: '#8fc2cd',
+      gradient: 'linear-gradient(225deg, #8fc2cd, #041c24)',
       url: 'https://github.com/'
     },
     {
@@ -93,8 +93,8 @@ export const ChromaGrid: React.FC<ChromaGridProps> = ({
       title: 'Tyler Rodriguez',
       subtitle: 'Cloud Architect',
       handle: '@tylerrod',
-      borderColor: '#06B6D4',
-      gradient: 'linear-gradient(135deg, #06B6D4, #000)',
+      borderColor: '#b8dce2',
+      gradient: 'linear-gradient(135deg, #b8dce2, #041c24)',
       url: 'https://aws.amazon.com/'
     }
   ];

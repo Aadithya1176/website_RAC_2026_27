@@ -13,7 +13,7 @@ interface TeamMemberCardProps {
 const TeamMemberCard = ({ name, title, image, linkedin, instagram, imageClassName = '' }: TeamMemberCardProps) => {
   return (
     <motion.div
-      className="group bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
+      className="card-surface group overflow-hidden"
       whileHover={{ y: -5 }}
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -34,7 +34,7 @@ const TeamMemberCard = ({ name, title, image, linkedin, instagram, imageClassNam
                 href={linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 bg-white rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition-colors duration-300"
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-white transition-colors duration-300 hover:bg-brand hover:text-white"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
               >
@@ -46,7 +46,7 @@ const TeamMemberCard = ({ name, title, image, linkedin, instagram, imageClassNam
                 href={instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 bg-white rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition-colors duration-300"
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-white transition-colors duration-300 hover:bg-brand hover:text-white"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
               >

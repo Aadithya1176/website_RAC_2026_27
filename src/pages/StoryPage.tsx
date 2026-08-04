@@ -96,7 +96,7 @@ const StoryPage = () => {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <motion.div
-              className="bg-background p-8 rounded-lg shadow-lg"
+              className="rounded-2xl border border-brand-100 bg-brand-50 p-8 shadow-sm shadow-brand-950/5"
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -108,7 +108,7 @@ const StoryPage = () => {
             </motion.div>
 
             <motion.div
-              className="bg-background p-8 rounded-lg shadow-lg"
+              className="rounded-2xl border border-brand-100 bg-brand-50 p-8 shadow-sm shadow-brand-950/5"
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -123,7 +123,7 @@ const StoryPage = () => {
       </section>
 
       {/* Timeline */}
-      <section className="section-padding bg-background">
+      <section className="section-padding bg-brand-50">
         <div className="container-custom">
           <motion.div
             className="text-center mb-16"
@@ -141,7 +141,7 @@ const StoryPage = () => {
 
           <div className="relative">
             {/* Timeline Line */}
-            <div className="absolute left-4 md:left-1/2 transform -translate-x-px h-full w-1 bg-primary"></div>
+            <div className="absolute left-4 h-full w-1 -translate-x-px transform bg-brand md:left-1/2"></div>
 
             {timeline.map((item, index) => (
               <motion.div
@@ -154,14 +154,14 @@ const StoryPage = () => {
                 transition={{ delay: index * 0.1 }}
               >
                 {/* Timeline Point */}
-                <div className="absolute left-4 md:left-1/2 transform -translate-x-1/2 w-4 h-4 bg-primary rounded-full border-4 border-white shadow-lg z-10"></div>
+                <div className="absolute left-4 z-10 h-4 w-4 -translate-x-1/2 transform rounded-full border-4 border-white bg-brand shadow-lg shadow-brand/20 md:left-1/2"></div>
 
                 {/* Content */}
                 <div className={`w-full md:w-5/12 ${index % 2 === 0 ? 'md:pr-8 pl-12 md:pl-0' : 'md:pl-8 pl-12'}`}>
-                  <div className="bg-white p-6 rounded-lg shadow-lg">
+                  <div className="card-surface p-6">
                     <div className="flex items-center mb-3">
-                      <item.icon className="w-6 h-6 text-primary mr-3" />
-                      <span className="text-2xl font-bold text-primary">{item.year}</span>
+                      <item.icon className="mr-3 h-6 w-6 text-brand" />
+                      <span className="text-2xl font-bold text-brand">{item.year}</span>
                     </div>
                     <h3 className="text-xl font-bold text-text-dark mb-2">{item.title}</h3>
                     <p className="text-gray-600">{item.description}</p>
@@ -221,7 +221,7 @@ const StoryPage = () => {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
               >
-                <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-brand">
                   <value.icon className="w-8 h-8 text-white" />
                 </div>
                 <h3 className="text-xl font-bold text-text-dark mb-3">{value.title}</h3>

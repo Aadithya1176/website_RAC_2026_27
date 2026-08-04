@@ -55,7 +55,7 @@ const PixelTransition = ({
       const progress = Math.min(elapsed / maxDuration, 1);
 
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.fillStyle = 'rgba(24, 126, 95, 0.8)'; // primary color
+      ctx.fillStyle = 'rgba(2, 80, 99, 0.8)';
 
       pixels.forEach((pixel) => {
         const currentLife = pixel.life * (1 - progress);

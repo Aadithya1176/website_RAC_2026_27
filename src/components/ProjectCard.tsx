@@ -32,7 +32,7 @@ const ProjectCard = ({ title, date, location, description, image, details, galle
   return (
     <>
       <motion.div
-        className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 cursor-pointer"
+        className="card-surface cursor-pointer overflow-hidden"
         whileHover={{ y: -5 }}
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -65,7 +65,7 @@ const ProjectCard = ({ title, date, location, description, image, details, galle
 
           <p className="text-gray-700 text-sm mb-4 line-clamp-2">{description}</p>
 
-          <button className="text-primary font-semibold hover:text-secondary transition-colors">
+          <button className="font-semibold text-brand transition-colors hover:text-brand-700">
             Learn More
           </button>
         </div>

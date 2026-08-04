@@ -14,31 +14,29 @@ const TeamPage = () => {
 
 
   const coreLeadership = [
-    { name: "Rtr. Sanjit M", title: "President 25-26", image: "/core/RTR SANJIT.png" },
-    { name: "Rtr. Nandhini M", title: "Vice President 25-26", image: "/core/RTR. NANDHINI M.jpg", imageClassName: "object-[center_20%]" },
-    { name: "Rtr. Shrinidhi R", title: "Secretary 25-26", image: "/core/RTR. SHRINIDHI R.jpg" },
-    { name: "Rtr. Nethra Shree T D", title: "Joint Secretary 25-26", image: "/core/RTR NETHRA.png" },
-    { name: "Rtr. Architha M", title: "Sergeant-At-Arms 25-26", image: "/core/RTR. ARCHITHA M.jpg" },
-    { name: "Rtr. Sivadharshan M S", title: "Deputy Sergeant-At-Arms 25-26", image: "/core/RTR. SIVADHARSHAN M S .JPG" },
-    { name: "Rtr. Siva Sooryaa", title: "Club Advisor 25-26", image: "/core/RTR. SA SIVA SOORYAA.jpg" },
-    { name: "Rtr. Gokula Sarathy P S", title: "Treasurer & Foundation Chair 25-26", image: "/core/RTR. GOKULA SARATHY P S.jpg" },
-    { name: "Rtr. Siva Sruthy VGP", title: "Public Relations Officer & Blood Donation Head 25-26", image: "/core/RTR. SIVA SRUTHY VGP.JPG" },
-    { name: "Rtr. Rishab V", title: "Professional Service Director 25-26", image: "/core/RTR. RISHAB V.jpg" },
-    { name: "Rtr. Pritvi R", title: "Associate Professional Service Director & Women Empowerment Head 25-26", image: "/core/RTR. PRITVI R.jpg" },
-    { name: "Rtr. Sriram Balaji", title: "Club Service Director 25-26", image: "/core/RTR. SRIRAM BALAJI.jpeg" },
-    { name: "Rtr. Anitha S", title: "Associate Club Service Director 25-26", image: "/core/RTR. ANITHA S.jpg" },
-    { name: "Rtr. Sherin Banu", title: "Community Service Director 25-26", image: "/core/RTR. SHERIN BANU.jpg" },
-    { name: "Rtr. Adhithyan M", title: "Associate Community Service Director 25-26", image: "/core/RTR. ADHITHYAN M.jpeg" },
-    { name: "Rtr. Harsshitha Kumaravel", title: "International Service Director 25-26", image: "/core/RTR. HARSSHITHA KUMARAVEL.jpeg" },
-    { name: "Rtr. Bhuvaneswari S", title: "Associate International Service Director 25-26", image: "/core/RTR. BHUVANESWARI S.jpg" },
-    { name: "Rtr. Lakshanya Ramesh", title: "Creatives Head 25-26", image: "/core/RTR. LAKSHANYA RAMESH.jpg" },
-    { name: "Rtr. Sharukh Akthar A", title: "Associate Creatives Head 25-26", image: "/core/RTR. SHARUKH AKTHAR A.jpeg" },
-    { name: "Rtr. Keertana Sriram", title: "Editorial Board Head 25-26", image: "/core/RTR. KEERTANA SRIRAM.jpeg" },
-    { name: "Rtr. Keerthivasan", title: "Photography Head 25-26", image: "/core/RTR. KEERTHIVASAN.png" },
-    { name: "Rtr. Srisanjana B", title: "Videography Head 25-26", image: "/core/RTR. SRISANJANA B.jpg" },
-    { name: "Rtr. Jayaprakash", title: "Membership Development Head 25-26", image: "/core/RTR. JAYAPRAKASH.jpg" },
-    { name: "Rtr. Mukesh Kumar K", title: "Associate Membership Development Head 25-26", image: "/core/RTR. MUKESH KUMAR K.jpg" },
-    { name: "RTR. HARISH T", title: "Technical Head 25-26 & Website Developer", image: "/core/RTR. HARISH T.jpg" },
+    { name: "Rtr. Nandhini V", title: "President 26-27", image: "/board/Nandhini Velmurugan.jpg" },
+    { name: "Rtr. Vinesh D", title: "Vice President 26-27", image: "/board/Vinesh D.jpg" },
+    { name: "Rtr. Shreenidhi T", title: "Secretary 26-27", image: "/board/Shreenidhi T.jpg" },
+    { name: "Rtr. Akshara G", title: "Joint Secretary 26-27", image: "/board/akshara-rtr-pic-3.png" },
+    { name: "Rtr. Nikhilesh Anand", title: "Sergeant-At-Arms 26-27", image: "/board/Nikhilesh Anand.jpg", imageClassName: "object-[center_top]" },
+    { name: "Rtr. Nila Elango", title: "Deputy Sergeant-At-Arms 26-27", image: "/board/Nila Elango.jpg" },
+    { name: "Rtr. Akshith R", title: "Treasurer 26-27", image: "/board/Akshith R.jpg", imageClassName: "object-[center_0%]" },
+    { name: "Rtr. Samyuktha K S S", title: "Public Relations Officer (PRO) & Women Empowerment Head 26-27", image: "/board/Samyuktha K S S.jpg" },
+    { name: "Rtr. Adithya N", title: "Club Service Director 26-27", image: "/board/adithya-it-rtr-pic.png" },
+    { name: "Rtr. Varshini S", title: "Associate Club Service Director 26-27", image: "/board/Varshini S.JPG" },
+    { name: "Rtr. Praveen R", title: "Community Service Director & Blood Donation Head 26-27", image: "/board/Praveen R.jpg" },
+    { name: "Rtr. Angel Antony", title: "Associate Community Service Director 26-27", image: "/board/Angel Antony.png" },
+    { name: "Rtr. Rubaa Kumar K S", title: "Professional Service Director & Foundation Chair 26-27", image: "/board/Rubaa Kumar K S.jpg" },
+    { name: "Rtr. Meenashi S", title: "Associate Professional Service Director 26-27", image: "/board/Meenashi S.jpg" },
+    { name: "Rtr. Anuradha V", title: "International Service Director 26-27", image: "/board/Anuradha V.png" },
+    { name: "Rtr. Irfana S", title: "Associate International Service Director 26-27", image: "/board/Irfana S.png" },
+    { name: "Rtr. Sachin Saravanan", title: "Creatives Head 26-27", image: "/board/Sachin Saravanan.jpg" },
+    { name: "Rtr. K Srihari", title: "Associate Creatives Head 26-27", image: "/board/K Srihari.jpg" },
+    { name: "Rtr. Shree Nandhiga P", title: "Editorial Board Head 26-27", image: "/board/Shree Nandhiga P.jpg" },
+    { name: "Rtr. Harish Bhuvan S", title: "Media Head 26-27", image: "/board/Harish Bhuvan S.png" },
+    { name: "Rtr. Yugendran P", title: "Membership Development Head 26-27", image: "/board/Yugendran P.png" },
+    { name: "Rtr. Yuvasri K", title: "Associate Membership Development Head 26-27", image: "/board/Yuvasri K.jpg" },
+    { name: "Rtr. Aadithya R", title: "Technical Head 26-27", image: "/board/aadithyaraj_rtr_pic.jpg" },
   ];
 
   const boardCoordinators = [
@@ -92,7 +90,7 @@ const TeamPage = () => {
       </section>
 
       {/* Faculty Coordinator */}
-      <section className="section-padding bg-background">
+      <section className="section-padding bg-brand-50">
         <div className="container-custom">
           <motion.div
             className="text-center mb-12"
@@ -114,7 +112,7 @@ const TeamPage = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <div className="bg-white rounded-lg shadow-lg p-8 text-center">
+            <div className="card-surface p-8 text-center">
               <div className="w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden">
                 <img
                   src={facultyCoordinator.image}
@@ -157,12 +155,12 @@ const TeamPage = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <div className="bg-gray-100 rounded-lg p-1 flex items-center justify-center">
+            <div className="flex items-center justify-center rounded-2xl border border-border bg-surface-subtle p-1">
               <button
                 onClick={() => setActiveTab('core')}
                 className={`px-3 sm:px-6 py-2 sm:py-3 rounded-md font-semibold text-sm sm:text-base transition-colors ${activeTab === 'core'
-                  ? 'bg-primary text-white'
-                  : 'text-gray-600 hover:text-text-dark'
+                  ? 'bg-brand text-white shadow-sm shadow-brand/20'
+                  : 'text-ink-soft hover:text-brand-700'
                   }`}
               >
                 Core Leadership
@@ -170,8 +168,8 @@ const TeamPage = () => {
               <button
                 onClick={() => setActiveTab('board')}
                 className={`px-3 sm:px-6 py-2 sm:py-3 rounded-md font-semibold text-sm sm:text-base transition-colors ${activeTab === 'board'
-                  ? 'bg-primary text-white'
-                  : 'text-gray-600 hover:text-text-dark'
+                  ? 'bg-brand text-white shadow-sm shadow-brand/20'
+                  : 'text-ink-soft hover:text-brand-700'
                   }`}
               >
                 Board Members

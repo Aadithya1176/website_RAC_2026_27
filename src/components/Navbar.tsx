@@ -32,7 +32,7 @@ const Navbar = () => {
 
   return (
     <motion.nav
-      className="bg-primary bg-opacity-25 text-white fixed top-4 z-50 left-0 right-0 mx-auto rounded-full shadow-2xl backdrop-blur-md border border-secondary border-opacity-50 w-[95%] max-w-5xl"
+      className="fixed top-4 left-0 right-0 z-50 mx-auto w-[95%] max-w-5xl rounded-full border border-white/60 bg-white/80 text-text-dark shadow-lg shadow-brand-950/10 backdrop-blur-xl"
       initial={{ y: 0 }}
       animate={{ y: isVisible ? 0 : -100 }}
       transition={{ duration: 0.3, ease: "easeInOut" }}
@@ -59,14 +59,14 @@ const Navbar = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <Link to="/" className="hover:text-primary transition-colors px-3 py-2 rounded-full hover:bg-secondary hover:bg-opacity-30">
+            <Link to="/" className="rounded-full px-3 py-2 transition-colors hover:bg-brand-50 hover:text-brand-700">
               Home
             </Link>
 
             {/* About Dropdown */}
             <div className="relative">
               <button
-                className="flex items-center space-x-1 hover:text-primary transition-colors px-3 py-2 rounded-full hover:bg-secondary hover:bg-opacity-30"
+                className="flex items-center space-x-1 rounded-full px-3 py-2 transition-colors hover:bg-brand-50 hover:text-brand-700"
                 onMouseEnter={() => setAboutDropdown(true)}
                 onMouseLeave={() => setAboutDropdown(false)}
               >
@@ -79,18 +79,18 @@ const Navbar = () => {
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
-                    className="absolute top-full left-0 mt-2 w-48 bg-white bg-opacity-95 backdrop-blur-md text-text-dark rounded-lg shadow-lg py-2 border border-gray-200"
+                    className="absolute top-full left-0 mt-2 w-48 rounded-2xl border border-border bg-white/95 py-2 text-text-dark shadow-lg shadow-brand-950/10 backdrop-blur-md"
                     onMouseEnter={() => setAboutDropdown(true)}
                     onMouseLeave={() => setAboutDropdown(false)}
                   >
-                    <Link to="/about-us" className="block px-4 py-2 hover:bg-gray-100">
+                    <Link to="/about-us" className="block px-4 py-2 transition-colors hover:bg-brand-50 hover:text-brand-700">
                       About Us
                     </Link>
-                    <Link to="/story" className="block px-4 py-2 hover:bg-gray-100">
+                    <Link to="/story" className="block px-4 py-2 transition-colors hover:bg-brand-50 hover:text-brand-700">
 
                       Our Story
                     </Link>
-                    <Link to="/team" className="block px-4 py-2 hover:bg-gray-100">
+                    <Link to="/team" className="block px-4 py-2 transition-colors hover:bg-brand-50 hover:text-brand-700">
                       Our Team
                     </Link>
                   </motion.div>
@@ -98,11 +98,11 @@ const Navbar = () => {
               </AnimatePresence>
             </div>
 
-            <Link to="/impact" className="hover:text-primary transition-colors px-3 py-2 rounded-full hover:bg-secondary hover:bg-opacity-30">
+            <Link to="/impact" className="rounded-full px-3 py-2 transition-colors hover:bg-brand-50 hover:text-brand-700">
               Our Impact
             </Link>
 
-            <Link to="/gallery" className="hover:text-primary transition-colors px-3 py-2 rounded-full hover:bg-secondary hover:bg-opacity-30">
+            <Link to="/gallery" className="rounded-full px-3 py-2 transition-colors hover:bg-brand-50 hover:text-brand-700">
               Gallery
             </Link>
 
@@ -110,7 +110,7 @@ const Navbar = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden text-white hover:text-primary transition-colors p-2 rounded-full hover:bg-secondary hover:bg-opacity-30"
+            className="rounded-full p-2 text-text-dark transition-colors hover:bg-brand-50 hover:text-brand-700 md:hidden"
             onClick={toggleMenu}
           >
             {isOpen ? <FiX className="w-6 h-6" /> : <FiMenu className="w-6 h-6" />}
@@ -125,26 +125,26 @@ const Navbar = () => {
             initial={{ opacity: 0, x: '100%' }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: '100%' }}
-            className="md:hidden fixed top-20 right-4 w-64 max-h-[calc(100vh-6rem)] overflow-y-auto bg-primary bg-opacity-90 backdrop-blur-md shadow-2xl rounded-2xl border border-secondary border-opacity-50"
+            className="fixed top-20 right-4 max-h-[calc(100vh-6rem)] w-64 overflow-y-auto rounded-2xl border border-white/70 bg-white/95 shadow-2xl shadow-brand-950/15 backdrop-blur-xl md:hidden"
           >
             <div className="p-6 space-y-4">
               <Link
                 to="/"
-                className="block text-white hover:text-accent transition-colors"
+                className="block rounded-lg px-3 py-2 text-text-dark transition-colors hover:bg-brand-50 hover:text-brand-700"
                 onClick={toggleMenu}
               >
                 Home
               </Link>
               <Link
                 to="/about-us"
-                className="block text-white hover:text-accent transition-colors"
+                className="block rounded-lg px-3 py-2 text-text-dark transition-colors hover:bg-brand-50 hover:text-brand-700"
                 onClick={toggleMenu}
               >
                 About Us
               </Link>
               <Link
                 to="/story"
-                className="block text-white hover:text-accent transition-colors"
+                className="block rounded-lg px-3 py-2 text-text-dark transition-colors hover:bg-brand-50 hover:text-brand-700"
                 onClick={toggleMenu}
               >
 
@@ -152,21 +152,21 @@ const Navbar = () => {
               </Link>
               <Link
                 to="/team"
-                className="block text-white hover:text-accent transition-colors"
+                className="block rounded-lg px-3 py-2 text-text-dark transition-colors hover:bg-brand-50 hover:text-brand-700"
                 onClick={toggleMenu}
               >
                 Our Team
               </Link>
               <Link
                 to="/impact"
-                className="block text-white hover:text-accent transition-colors"
+                className="block rounded-lg px-3 py-2 text-text-dark transition-colors hover:bg-brand-50 hover:text-brand-700"
                 onClick={toggleMenu}
               >
                 Projects & Events
               </Link>
               <Link
                 to="/gallery"
-                className="block text-white hover:text-accent transition-colors"
+                className="block rounded-lg px-3 py-2 text-text-dark transition-colors hover:bg-brand-50 hover:text-brand-700"
                 onClick={toggleMenu}
               >
                 Gallery

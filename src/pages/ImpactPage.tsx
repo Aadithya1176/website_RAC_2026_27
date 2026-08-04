@@ -65,7 +65,7 @@ const ImpactPage = () => {
       </section>
 
       {/* Filter Buttons */}
-      <section className="section-padding bg-background">
+      <section className="section-padding bg-brand-50">
         <div className="container-custom">
           <motion.div
             className="flex flex-wrap justify-center gap-4 mb-12"
@@ -77,9 +77,9 @@ const ImpactPage = () => {
               <button
                 key={filter.id}
                 onClick={() => setActiveFilter(filter.id)}
-                className={`px-6 py-3 rounded-full font-semibold transition-all duration-300 ${activeFilter === filter.id
-                  ? 'bg-primary text-white shadow-lg'
-                  : 'bg-white text-gray-600 hover:bg-gray-50 hover:text-text-dark'
+                className={`rounded-full px-6 py-3 font-semibold transition-all duration-300 ${activeFilter === filter.id
+                  ? 'bg-brand text-white shadow-lg shadow-brand/20'
+                  : 'border border-border bg-white text-ink-soft hover:border-brand-200 hover:bg-brand-50 hover:text-brand-700'
                   }`}
               >
                 {filter.label}
@@ -153,10 +153,10 @@ const ImpactPage = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
             {[
-              { number: projects.length, label: "Total Projects", color: "text-primary" },
-              { number: 5000, label: "Lives Impacted", color: "text-accent" },
-              { number: 49, label: "Volunteers", color: "text-primary" },
-              { number: 15, label: "Years in Services", color: "text-accent" }
+              { number: projects.length, label: "Total Projects", color: "text-brand" },
+              { number: 5000, label: "Lives Impacted", color: "text-brand-700" },
+              { number: 49, label: "Volunteers", color: "text-brand" },
+              { number: 15, label: "Years in Services", color: "text-brand-700" }
             ].map((stat, index) => (
               <motion.div
                 key={index}

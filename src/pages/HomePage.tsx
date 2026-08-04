@@ -131,7 +131,7 @@ export default function HomePage() {
       </section>
 
       {/* Impact Numbers Section */}
-      <section className="section-padding bg-background">
+      <section className="section-padding bg-brand-50">
         <div className="container-custom">
           <motion.div
             className="text-center mb-12"
@@ -139,20 +139,21 @@ export default function HomePage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-text-dark mb-4">
+            <p className="section-kicker mb-3">Community at a glance</p>
+            <h2 className="section-title mb-4">
               What Sets Us Apart
             </h2>
-            <p className="text-gray-600 text-lg">
+            <p className="text-ink-soft text-lg">
               Together, We Make a Difference
             </p>
           </motion.div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
             {[
-              { icon: FiUsers, number: 50, label: "Active members", color: "text-primary" },
-              { icon: FiAward, number: projectCount, label: "Projects Completed", color: "text-secondary" },
-              { icon: FiHeart, number: 5000, label: "Lives Impacted", color: "text-primary" },
-              { icon: FiGlobe, number: 4, label: "Avenues", color: "text-secondary" }
+              { icon: FiUsers, number: 50, label: "Active members", color: "text-brand" },
+              { icon: FiAward, number: projectCount, label: "Projects Completed", color: "text-brand-700" },
+              { icon: FiHeart, number: 5000, label: "Lives Impacted", color: "text-brand" },
+              { icon: FiGlobe, number: 4, label: "Avenues", color: "text-brand-700" }
             ].map((item, index) => (
               <motion.div
                 key={index}
@@ -168,7 +169,7 @@ export default function HomePage() {
                 <div className="text-3xl md:text-4xl font-bold text-text-dark mb-2 flex items-center justify-center">
                   <AnimatedCounter end={item.number} />+
                 </div>
-                <p className="text-gray-600 font-medium">{item.label}</p>
+                <p className="font-medium text-ink-soft">{item.label}</p>
               </motion.div>
             ))}
           </div>
@@ -184,10 +185,11 @@ export default function HomePage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-text-dark mb-4">
+            <p className="section-kicker mb-3">Flagship initiatives</p>
+            <h2 className="section-title mb-4">
               Our Flagship Projects
             </h2>
-            <p className="text-gray-600 text-lg">
+            <p className="text-ink-soft text-lg">
               Discover the impactful projects we've been working on
             </p>
           </motion.div>
@@ -216,7 +218,7 @@ export default function HomePage() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="section-padding bg-background">
+      <section className="section-padding bg-brand-50">
         <div className="container-custom">
           <motion.div
             className="text-center mb-12"
@@ -224,10 +226,11 @@ export default function HomePage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-text-dark mb-4">
+            <p className="section-kicker mb-3">Member voices</p>
+            <h2 className="section-title mb-4">
               From Our Members
             </h2>
-            <p className="text-gray-600 text-lg">
+            <p className="text-ink-soft text-lg">
               Experiences that define who we are
             </p>
           </motion.div>
@@ -236,7 +239,7 @@ export default function HomePage() {
             {testimonials.map((testimonial, index) => (
               <motion.div
                 key={index}
-                className="bg-white p-6 rounded-lg shadow-lg"
+                className="card-surface p-6"
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -244,9 +247,9 @@ export default function HomePage() {
               >
                 <div className="mb-4">
                   <h3 className="font-semibold text-text-dark">{testimonial.name}</h3>
-                  <p className="text-sm text-gray-600">{testimonial.role}</p>
+                  <p className="text-sm text-ink-muted">{testimonial.role}</p>
                 </div>
-                <p className="text-gray-700 italic">"{testimonial.quote}"</p>
+                <p className="italic text-ink-soft">"{testimonial.quote}"</p>
               </motion.div>
             ))}
           </div>
