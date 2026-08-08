@@ -1,23 +1,21 @@
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FiUsers, FiAward, FiHeart, FiGlobe } from 'react-icons/fi';
+import { FiUsers, FiAward, FiHeart, FiGlobe, FiArrowRight } from 'react-icons/fi';
 import AnimatedCounter from '../components/AnimatedCounter';
-
-import CircularGallery from '../components/CircularGallery';
 import { projects } from '../data/projects';
 
 const FLAGSHIP_PROJECTS = [
-  { image: '/gallery/food_donation.png', text: 'Anna Vriksha' },
-  { image: '/gallery/udhiram.png', text: 'UDHIRAM' },
-  { image: '/gallery/victo_ryla.png', text: 'Victo RYLA' },
+  { image: '/gallery/food_donation.png', text: 'Anna Vriksha', tilt: -7 },
+  { image: '/gallery/udhiram.png', text: 'UDHIRAM', tilt: 5 },
+  { image: '/gallery/victo_ryla.png', text: 'Victo RYLA', tilt: -4 },
 ];
 
 export default function HomePage() {
   const heroImages = [
-    "/gallery/WhatsApp Image 2025-08-11 at 23.23.53_d9a3a398.jpg",
-    "/gallery/IMG_3163.JPG",
-    "/gallery/IMG-20250811-WA0090.jpg",
+    '/gallery/WhatsApp Image 2025-08-11 at 23.23.53_d9a3a398.jpg',
+    '/gallery/IMG_3163.JPG',
+    '/gallery/IMG-20250811-WA0090.jpg',
   ];
 
   const [heroIndex, setHeroIndex] = useState(0);
@@ -33,228 +31,262 @@ export default function HomePage() {
     }, 5000);
     return () => clearInterval(intervalId);
   }, [heroImages.length]);
-  // Featured projects are now fetched from backend
 
   const testimonials = [
     {
-      name: "Bhavanishraj",
-      role: "President 2024-25",
-      quote: "Rotaract strengthened my ability to handle pressure, communicate confidently through public speaking, lead with responsibility and manage teams effectively. These experiences significantly enhanced my confidence, resilience and leadership presence.",
-      image: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face"
+      name: 'Bhavanishraj',
+      role: 'President 2024-25',
+      quote:
+        'Rotaract strengthened my ability to handle pressure, communicate confidently through public speaking, lead with responsibility and manage teams effectively.',
     },
     {
-      name: "Rethinaath",
-      role: "Vice President 2024-25",
-      quote: "Rotaract club of REC is the biggest milestone in my life. I got to work with the people I love spending time with. The works I did, made me set the path for my future, opening new windows. One of  the best 2yrs of my lifetime.",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face"
+      name: 'Rethinaath',
+      role: 'Vice President 2024-25',
+      quote:
+        'Rotaract club of REC is the biggest milestone in my life. The work we did opened new windows and set the path for my future.',
     },
     {
-      name: "Kiruthika",
-      role: "Secretary 2024-25",
-      quote: "Rotaract enriched me with family-like friendships, a strong network, and personal growth from introvert to ambivert. It strengthened my confidence, communication, leadership, teamwork, and skills in documentation, crisis handling, and event management, shaping me into a more confident individual.",
-      image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face"
-    }
+      name: 'Kiruthika',
+      role: 'Secretary 2024-25',
+      quote:
+        'Rotaract enriched me with family-like friendships, a strong network, and growth in confidence, communication, leadership, teamwork, and event management.',
+    },
   ];
 
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="relative h-screen flex items-center overflow-hidden">
+      <section className="section-shell editorial-dark relative flex min-h-screen items-center overflow-hidden">
         <div className="absolute inset-0">
           {heroImages.map((src, i) => (
             <img
               key={src}
               src={src}
               alt="Hero Background"
-              loading={i === 0 ? "eager" : "lazy"}
+              loading={i === 0 ? 'eager' : 'lazy'}
               decoding="async"
-              className={`absolute inset-0 w-full h-full object-cover filter brightness-110 contrast-105 saturate-110 transition-opacity duration-1000 ${i === heroIndex ? 'opacity-100' : 'opacity-0'
-                }`}
+              className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-1000 ${
+                i === heroIndex ? 'opacity-70' : 'opacity-0'
+              }`}
             />
           ))}
-          <div className="absolute inset-0 bg-black bg-opacity-30"></div>
-          {/* Slider dots */}
-          <div className="absolute bottom-6 left-0 right-0 flex items-center justify-center gap-2 z-10">
-            {heroImages.map((_, i) => (
-              <button
-                key={i}
-                aria-label={`Go to slide ${i + 1}`}
-                onClick={() => setHeroIndex(i)}
-                className={`w-3 h-3 rounded-full transition-all duration-300 ${i === heroIndex ? 'bg-white shadow-md w-6' : 'bg-white/50 hover:bg-white/80'
-                  }`}
-              />
-            ))}
-          </div>
+          <div className="absolute inset-0 bg-gradient-to-r from-brand-950/92 via-brand-950/55 to-brand-950/20" />
+          <div className="absolute inset-0 bg-gradient-to-t from-brand-950/80 via-transparent to-brand-950/10" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(233,180,76,0.15),transparent_22%)]" />
         </div>
 
-        <div className="relative z-10 container-custom flex items-center justify-between w-full">
-          {/* Left Side - Text Content */}
+        <div className="container-custom relative z-10 grid items-end gap-14 py-28 lg:grid-cols-[1.35fr_0.65fr]">
           <motion.div
-            className="text-white max-w-2xl flex-1 text-left"
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
+            className="max-w-4xl hero-text-shadow"
           >
-            <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 font-sans text-left leading-tight md:leading-[1.25]">
-              Driven by Passion<br />
-              Defined by Impact
+            <p className="section-kicker mb-6">Rotaract Club of REC</p>
+            <h1 className="font-serif text-5xl leading-[0.92] text-white md:text-7xl lg:text-[6.2rem]">
+              Driven by service.
+              <br />
+              Defined by impact.
             </h1>
-            <p className="text-lg md:text-xl lg:text-2xl mb-6 md:mb-8 text-left">
-              The Rotaract Club of Rajalakshmi Engineering College is where passion meets purpose. Discover how we're making a difference.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="mt-8 max-w-2xl space-y-5 text-base leading-8 text-slate-200 md:text-xl">
+              <p>
+                A youth-led movement shaping leaders, building fellowship, and delivering measurable
+                community action through the Rotaract Club of Rajalakshmi Engineering College.
+              </p>
+            </div>
+
+            <div className="mt-10 flex flex-col gap-4 sm:flex-row">
               <Link to="/impact" className="btn-primary">
                 Explore Our Projects
               </Link>
-              <Link to="/team" className="btn-secondary">
+              <Link to="/team" className="btn-secondary text-white">
                 Meet the Team
               </Link>
             </div>
           </motion.div>
 
-          {/* Right Side - RACREC Logo */}
           <motion.div
-            className="hidden lg:flex items-center justify-end pr-20 flex-1"
-            initial={{ opacity: 0, x: 50 }}
+            initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 0.8, delay: 0.15 }}
+            className="editorial-panel border-white/15 bg-brand-950/45 p-8 text-white backdrop-blur-md"
           >
-            <div className="text-right">
-              <div className="w-56 h-56 md:w-64 md:h-64 flex items-center justify-center mb-4">
-                <img src="/club_logo_1_1.png" alt="RACREC logo" className="max-w-full max-h-full object-contain drop-shadow-2xl" />
-              </div>
-              {/* <h2 className="text-3xl font-bold text-white">RACREC</h2>
-              <p className="text-primary text-lg mt-2 font-semibold">Rotaract Club</p> */}
+            <div className="mb-6 flex items-center justify-between">
+              <img src="/club_logo_1_1.png" alt="RACREC logo" className="h-20 w-20 object-contain" />
+              <span className="section-kicker">Annual Outlook</span>
             </div>
+            <div className="gold-divider mb-5" />
+            <p className="font-serif text-3xl leading-tight">
+              Leadership, fellowship, and service woven into one evolving campus story.
+            </p>
+            <p className="mt-5 text-sm leading-7 text-slate-200">
+              Every initiative is designed to feel human, credible, and lasting, from flagship blood
+              donation drives to professional development and community outreach.
+            </p>
           </motion.div>
+        </div>
+
+        <div className="absolute bottom-8 left-0 right-0 z-10 flex items-center justify-center gap-2">
+          {heroImages.map((_, i) => (
+            <button
+              key={i}
+              aria-label={`Go to slide ${i + 1}`}
+              onClick={() => setHeroIndex(i)}
+              className={`h-2 rounded-full transition-all duration-300 ${
+                i === heroIndex ? 'w-12 bg-gold-300' : 'w-5 bg-white/40 hover:bg-white/70'
+              }`}
+            />
+          ))}
         </div>
       </section>
 
-      {/* Impact Numbers Section */}
-      <section className="section-padding bg-brand-50">
+      <section className="section-shell section-padding bg-background">
         <div className="container-custom">
-          <motion.div
-            className="text-center mb-12"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <p className="section-kicker mb-3">Community at a glance</p>
-            <h2 className="section-title mb-4">
-              What Sets Us Apart
-            </h2>
-            <p className="text-ink-soft text-lg">
-              Together, We Make a Difference
+          <div className="mb-14 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+            <div>
+              <p className="section-kicker mb-3">Community at a glance</p>
+              <h2 className="section-title max-w-3xl">A student movement built on visible, measurable work.</h2>
+            </div>
+            <p className="max-w-xl text-base leading-7 text-ink-soft">
+              We believe credibility comes from consistency. The numbers below are not decoration,
+              but signals of how seriously the club approaches service, leadership, and participation.
             </p>
-          </motion.div>
+          </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4">
             {[
-              { icon: FiUsers, number: 50, label: "Active members", color: "text-brand" },
-              { icon: FiAward, number: projectCount, label: "Projects Completed", color: "text-brand-700" },
-              { icon: FiHeart, number: 5000, label: "Lives Impacted", color: "text-brand" },
-              { icon: FiGlobe, number: 4, label: "Avenues", color: "text-brand-700" }
+              { icon: FiUsers, number: 50, label: 'Active members' },
+              { icon: FiAward, number: projectCount, label: 'Projects completed' },
+              { icon: FiHeart, number: 5000, label: 'Lives impacted' },
+              { icon: FiGlobe, number: 4, label: 'Avenues of service' },
             ].map((item, index) => (
               <motion.div
-                key={index}
-                className="text-center"
-                initial={{ opacity: 0, y: 50 }}
+                key={item.label}
+                className="editorial-panel p-7"
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
+                transition={{ delay: index * 0.08 }}
               >
-                <div className={`text-4xl mb-4 ${item.color}`}>
-                  <item.icon className="mx-auto" />
+                <item.icon className="mb-6 h-8 w-8 text-brand" />
+                <div className="mb-3 flex items-baseline gap-1 font-serif text-5xl text-text-dark">
+                  <AnimatedCounter end={item.number} />
+                  <span>+</span>
                 </div>
-                <div className="text-3xl md:text-4xl font-bold text-text-dark mb-2 flex items-center justify-center">
-                  <AnimatedCounter end={item.number} />+
-                </div>
-                <p className="font-medium text-ink-soft">{item.label}</p>
+                <p className="text-sm uppercase tracking-[0.22em] text-ink-soft">{item.label}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Featured Projects Section */}
-      <section className="section-padding bg-white">
+      <section className="section-shell section-padding bg-white">
         <div className="container-custom">
-          <motion.div
-            className="text-center mb-12"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <p className="section-kicker mb-3">Flagship initiatives</p>
-            <h2 className="section-title mb-4">
-              Our Flagship Projects
-            </h2>
-            <p className="text-ink-soft text-lg">
-              Discover the impactful projects we've been working on
+          <div className="mb-14 grid gap-8 lg:grid-cols-[0.7fr_1.3fr] lg:items-end">
+            <div>
+              <p className="section-kicker mb-3">Flagship initiatives</p>
+              <h2 className="section-title">Projects framed as the public face of our impact.</h2>
+            </div>
+            <p className="max-w-2xl text-base leading-7 text-ink-soft">
+              The imagery remains untouched and central. We’ve simply given each project a stronger
+              editorial frame so the work feels documented with clarity and pride.
             </p>
-          </motion.div>
-
-          {/* Signature Projects Gallery */}
-          <div className="mt-16 h-[500px]">
-            <CircularGallery
-              items={FLAGSHIP_PROJECTS}
-              bend={3}
-              textColor="#000000"
-              borderRadius={0.05}
-            />
           </div>
 
-          <motion.div
-            className="text-center mt-12"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+          <div
+            className="flex flex-wrap items-center justify-center gap-y-14 py-8 sm:flex-nowrap sm:-space-x-10"
+            style={{ perspective: '1800px' }}
           >
+            {FLAGSHIP_PROJECTS.map((project, index) => (
+              <motion.article
+                key={project.text}
+                className="group relative w-64 flex-shrink-0 cursor-pointer sm:w-72"
+                style={{ transformStyle: 'preserve-3d', transformPerspective: 1800, zIndex: index }}
+                initial={{ opacity: 0, y: 40, rotate: project.tilt }}
+                whileInView={{ opacity: 1, y: 0, rotate: project.tilt }}
+                whileHover={{
+                  rotate: 0,
+                  rotateY: -22,
+                  y: -28,
+                  scale: 1.06,
+                  zIndex: 30,
+                }}
+                whileTap={{ rotate: 0, rotateY: -22, y: -28, scale: 1.06, zIndex: 30 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.08, type: 'spring', stiffness: 240, damping: 22 }}
+              >
+                <div
+                  className="card-surface relative overflow-hidden p-3 shadow-editorial"
+                  style={{ transformOrigin: 'left center' }}
+                >
+                  <div className="relative h-72 overflow-hidden rounded-[20px] border border-gold-300/35 md:h-80">
+                    <img src={project.image} alt={project.text} className="h-full w-full object-cover" />
+                    {/* page-fold shadow that appears as the card lifts, mimicking a turning page */}
+                    <div className="pointer-events-none absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-black/40 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                  </div>
+                </div>
+                <div className="mt-4 flex items-center justify-center gap-2">
+                  <h3 className="font-serif text-xl italic text-text-dark">{project.text}</h3>
+                  <FiArrowRight className="h-4 w-4 text-gold-500 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                </div>
+              </motion.article>
+            ))}
+          </div>
+
+          <div className="mt-12 text-center">
             <Link to="/impact" className="btn-primary">
               View All Projects
             </Link>
-          </motion.div>
+          </div>
         </div>
       </section>
 
-      {/* Testimonials Section */}
-      <section className="section-padding bg-brand-50">
-        <div className="container-custom">
-          <motion.div
-            className="text-center mb-12"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
+      <section className="section-shell section-padding editorial-dark">
+        <div className="container-custom grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+          <div>
             <p className="section-kicker mb-3">Member voices</p>
-            <h2 className="section-title mb-4">
-              From Our Members
-            </h2>
-            <p className="text-ink-soft text-lg">
-              Experiences that define who we are
+            <h2 className="font-serif text-5xl leading-none text-white md:text-6xl">What this journey feels like from the inside.</h2>
+            <p className="mt-6 max-w-xl text-base leading-7 text-slate-200">
+              Beyond metrics and milestones, the club is remembered for the confidence it builds and the
+              relationships it leaves behind.
             </p>
-          </motion.div>
+          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <motion.div
-                key={index}
-                className="card-surface p-6"
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-              >
-                <div className="mb-4">
-                  <h3 className="font-semibold text-text-dark">{testimonial.name}</h3>
-                  <p className="text-sm text-ink-muted">{testimonial.role}</p>
-                </div>
-                <p className="italic text-ink-soft">"{testimonial.quote}"</p>
-              </motion.div>
-            ))}
+          <div className="space-y-6">
+            <motion.blockquote
+              className="editorial-panel border-white/10 bg-white/8 p-8 text-white"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
+              <p className="font-serif text-4xl leading-tight text-teal-300">
+                “{testimonials[0].quote}”
+              </p>
+              <footer className="mt-6 text-sm uppercase tracking-[0.24em] text-gold-300">
+                {testimonials[0].name} · {testimonials[0].role}
+              </footer>
+            </motion.blockquote>
+
+            <div className="grid gap-6 md:grid-cols-2">
+              {testimonials.slice(1).map((testimonial, index) => (
+                <motion.div
+                  key={testimonial.name}
+                  className="rounded-[24px] border border-white/10 bg-white/6 p-6"
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.08 }}
+                >
+                  <p className="font-serif text-2xl leading-snug text-white">“{testimonial.quote}”</p>
+                  <p className="mt-5 text-sm uppercase tracking-[0.22em] text-gold-300">
+                    {testimonial.name}
+                  </p>
+                  <p className="mt-1 text-sm text-slate-300">{testimonial.role}</p>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
     </div>
   );
-};
+}

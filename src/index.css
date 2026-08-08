@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Poppins:wght@400;600;700&family=Roboto:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -10,8 +10,15 @@
   }
   
   body {
-    @apply bg-background text-text-dark font-sans;
+    @apply bg-background text-text-dark font-sans antialiased;
     contain: layout style paint;
+    background-image:
+      radial-gradient(circle at top left, rgba(233, 180, 76, 0.08), transparent 28%),
+      linear-gradient(180deg, rgba(255, 253, 249, 0.96), rgba(245, 240, 232, 0.92));
+  }
+
+  ::selection {
+    @apply bg-gold-300 text-brand-950;
   }
 }
 
@@ -66,19 +73,19 @@ section, [role="region"] {
 
 @layer components {
   .btn-primary {
-    @apply inline-flex items-center justify-center rounded-xl bg-brand px-6 py-3 font-semibold text-white shadow-sm shadow-brand/20 transition-all duration-300 hover:-translate-y-0.5 hover:bg-brand-700 hover:shadow-lg hover:shadow-brand/25;
+    @apply inline-flex items-center justify-center rounded-full bg-gold-300 px-6 py-3 font-semibold text-brand-950 shadow-soft transition-all duration-500 hover:-translate-y-0.5 hover:bg-gold-200;
   }
   
   .btn-secondary {
-    @apply inline-flex items-center justify-center rounded-xl border border-brand-200 bg-white px-6 py-3 font-semibold text-brand shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-300 hover:bg-brand-50 hover:text-brand-700;
+    @apply inline-flex items-center justify-center rounded-full border border-white/60 bg-transparent px-6 py-3 font-semibold text-current transition-all duration-500 hover:-translate-y-0.5 hover:border-gold-300 hover:text-gold-300;
   }
   
   .section-padding {
-    @apply py-16 px-4 sm:px-6 lg:px-8;
+    @apply px-4 py-20 sm:px-6 lg:px-8 md:py-24;
   }
 
   .section-padding-top {
-    @apply pt-24 pb-16 px-4 sm:px-6 lg:px-8;
+    @apply px-4 pb-16 pt-32 sm:px-6 lg:px-8 md:pb-20 md:pt-36;
   }
   
   .container-custom {
@@ -86,14 +93,56 @@ section, [role="region"] {
   }
 
   .section-title {
-    @apply text-3xl font-bold text-text-dark md:text-4xl;
+    @apply font-serif text-4xl font-semibold leading-none text-text-dark md:text-5xl lg:text-6xl;
   }
 
   .section-kicker {
-    @apply text-sm font-semibold uppercase tracking-[0.18em] text-brand-600;
+    @apply text-xs font-bold uppercase tracking-[0.32em] text-gold-500 md:text-sm;
   }
 
   .card-surface {
-    @apply rounded-2xl border border-border bg-white shadow-sm shadow-slate-900/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-brand-100/40;
+    @apply rounded-[24px] border border-border/70 bg-surface shadow-editorial transition-all duration-500 hover:-translate-y-1;
+  }
+
+  .section-shell {
+    @apply relative overflow-hidden;
+  }
+
+  .section-shell::before {
+    content: "";
+    @apply pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-gold-300/70 to-transparent;
+  }
+
+  .editorial-panel {
+    @apply rounded-[28px] border border-border/70 bg-surface/95 shadow-editorial backdrop-blur-sm;
+  }
+
+  .editorial-dark {
+    @apply bg-brand-950 text-ink-inverse;
+    background-image:
+      radial-gradient(circle at top right, rgba(233, 180, 76, 0.15), transparent 22%),
+      radial-gradient(circle at bottom left, rgba(255, 255, 255, 0.05), transparent 24%);
+  }
+
+  .gold-divider {
+    @apply h-px w-20 bg-gold-300;
+  }
+
+  .hero-text-shadow {
+    text-shadow: 0 6px 28px rgba(1, 31, 38, 0.65), 0 2px 8px rgba(1, 31, 38, 0.45);
+  }
+
+  .nav-link {
+    @apply relative rounded-full px-3 py-2 transition-colors duration-300;
+  }
+
+  .nav-link::after {
+    content: "";
+    @apply absolute bottom-0 left-3 right-3 h-px origin-left scale-x-0 bg-gold-300 transition-transform duration-300;
+  }
+
+  .nav-link:hover::after,
+  .nav-link:focus-visible::after {
+    @apply scale-x-100;
   }
 }

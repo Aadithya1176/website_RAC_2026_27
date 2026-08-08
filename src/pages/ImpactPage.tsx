@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import ProjectCard from '../components/ProjectCard';
-
 import { projects as staticProjects } from '../data/projects';
 
 const ImpactPage = () => {
@@ -9,67 +8,55 @@ const ImpactPage = () => {
   const [projects, setProjects] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
-  // Load projects from static data
   useEffect(() => {
     const formattedProjects = staticProjects.map((p: any) => ({
       id: p.id,
       title: p.title,
-      // Handle date formatting
       date: p.eventDate || (p.createdAt ? new Date(p.createdAt).toLocaleDateString('en-GB').replace(/\//g, '-') : 'Recent'),
       location: p.venue || 'RACREC',
       description: p.oneLiner || p.description,
-      // Image is already correct path in static data (/uploads/...) or URL
       image: p.image || '/default-image.jpg',
       category: p.avenue,
       details: p.description,
       isSignature: p.isSignature,
-      status: p.status
+      status: p.status,
     }));
     setProjects(formattedProjects);
     setLoading(false);
   }, []);
-
-
 
   const filters = [
     { id: 'all', label: 'All Projects' },
     { id: 'club', label: 'Club Service' },
     { id: 'community', label: 'Community Service' },
     { id: 'international', label: 'International Service' },
-    { id: 'professional', label: 'Professional Service' }
+    { id: 'professional', label: 'Professional Service' },
   ];
 
-  const filteredProjects = activeFilter === 'all'
-    ? projects
-    : projects.filter(project => project.category === activeFilter);
+  const filteredProjects = activeFilter === 'all' ? projects : projects.filter((project) => project.category === activeFilter);
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
-      <section className="section-padding-top pt-40 bg-white">
-        <div className="container-custom">
-          <motion.div
-            className="text-center"
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <h1 className="text-3xl md:text-5xl font-bold text-text-dark mb-4">
-              Our Impact in Action
+      <section className="section-shell editorial-dark section-padding-top">
+        <div className="container-custom grid gap-10 lg:grid-cols-[1fr_0.9fr] lg:items-end">
+          <div>
+            <p className="section-kicker mb-4">Our Impact</p>
+            <h1 className="font-serif text-5xl leading-[0.94] text-white md:text-7xl">
+              Projects documented with clarity, not clutter.
             </h1>
-            <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
-              Discover the transformative projects and events that showcase our commitment to service and community development.
-            </p>
-          </motion.div>
+          </div>
+          <p className="max-w-2xl text-lg leading-8 text-slate-200">
+            This page reads like a living archive of club work: each event positioned with stronger
+            visual hierarchy, clearer filters, and a more editorial rhythm.
+          </p>
         </div>
       </section>
 
-      {/* Filter Buttons */}
-      <section className="section-padding bg-brand-50">
+      <section className="section-shell section-padding bg-white">
         <div className="container-custom">
           <motion.div
-            className="flex flex-wrap justify-center gap-4 mb-12"
-            initial={{ opacity: 0, y: 50 }}
+            className="mb-12 flex flex-wrap justify-center gap-4"
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
@@ -77,29 +64,21 @@ const ImpactPage = () => {
               <button
                 key={filter.id}
                 onClick={() => setActiveFilter(filter.id)}
-                className={`rounded-full px-6 py-3 font-semibold transition-all duration-300 ${activeFilter === filter.id
-                  ? 'bg-brand text-white shadow-lg shadow-brand/20'
-                  : 'border border-border bg-white text-ink-soft hover:border-brand-200 hover:bg-brand-50 hover:text-brand-700'
-                  }`}
+                className={`rounded-full px-6 py-3 text-sm font-semibold transition-all duration-300 ${
+                  activeFilter === filter.id
+                    ? 'bg-brand text-white shadow-soft'
+                    : 'border border-border bg-surface text-ink-soft hover:border-gold-300 hover:text-brand'
+                }`}
               >
                 {filter.label}
               </button>
             ))}
           </motion.div>
 
-          {/* Loading State */}
-          {loading && (
-            <div className="text-center py-12">
-              <p className="text-gray-600">Loading projects...</p>
-            </div>
-          )}
+          {loading && <div className="py-12 text-center text-ink-soft">Loading projects...</div>}
 
-          {/* Projects Grid */}
           {!loading && (
-            <motion.div
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-              layout
-            >
+            <motion.div className="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3" layout>
               <AnimatePresence mode="popLayout">
                 {filteredProjects.map((project, index) => (
                   <motion.div
@@ -108,10 +87,7 @@ const ImpactPage = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 20 }}
-                    transition={{
-                      duration: 0.3,
-                      delay: index * 0.05
-                    }}
+                    transition={{ duration: 0.3, delay: index * 0.03 }}
                   >
                     <ProjectCard {...project} priority={index < 3} />
                   </motion.div>
@@ -121,55 +97,37 @@ const ImpactPage = () => {
           )}
 
           {!loading && filteredProjects.length === 0 && (
-            <motion.div
-              className="text-center py-12"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-            >
-              <p className="text-gray-600 text-lg">
-                No projects found for the selected category.
-              </p>
+            <motion.div className="py-12 text-center text-lg text-ink-soft" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+              No projects found for the selected category.
             </motion.div>
           )}
         </div>
       </section>
 
-      {/* Impact Statistics */}
-      <section className="section-padding bg-white">
+      <section className="section-shell section-padding bg-background">
         <div className="container-custom">
-          <motion.div
-            className="text-center mb-12"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-3xl font-bold text-text-dark mb-4">
-              Project Impact Summary
-            </h2>
-            <p className="text-gray-600">
-              A snapshot of our collective achievements
-            </p>
-          </motion.div>
+          <div className="mb-14 text-center">
+            <p className="section-kicker mb-3">Summary</p>
+            <h2 className="section-title">A snapshot of collective achievement.</h2>
+          </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4">
             {[
-              { number: projects.length, label: "Total Projects", color: "text-brand" },
-              { number: 5000, label: "Lives Impacted", color: "text-brand-700" },
-              { number: 49, label: "Volunteers", color: "text-brand" },
-              { number: 15, label: "Years in Services", color: "text-brand-700" }
+              { number: projects.length, label: 'Total Projects' },
+              { number: 5000, label: 'Lives Impacted' },
+              { number: 49, label: 'Volunteers' },
+              { number: 15, label: 'Years in Service' },
             ].map((stat, index) => (
               <motion.div
-                key={index}
-                className="text-center"
-                initial={{ opacity: 0, y: 50 }}
+                key={stat.label}
+                className="editorial-panel p-7 text-center"
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
+                transition={{ delay: index * 0.08 }}
               >
-                <div className={`text-3xl md:text-4xl font-bold mb-2 ${stat.color}`}>
-                  {stat.number}+
-                </div>
-                <p className="text-gray-600 font-medium">{stat.label}</p>
+                <div className="font-serif text-5xl text-brand">{stat.number}+</div>
+                <p className="mt-3 text-sm uppercase tracking-[0.22em] text-ink-soft">{stat.label}</p>
               </motion.div>
             ))}
           </div>
@@ -179,4 +137,4 @@ const ImpactPage = () => {
   );
 };
 
-export default ImpactPage; 
+export default ImpactPage;

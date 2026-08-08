@@ -13,17 +13,21 @@ interface ProjectCardProps {
   priority?: boolean;
 }
 
-const ProjectCard = ({ title, date, location, description, image, details, gallery, priority = false }: ProjectCardProps) => {
+const ProjectCard = ({
+  title,
+  date,
+  location,
+  description,
+  image,
+  details,
+  gallery,
+  priority = false,
+}: ProjectCardProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
-  // Prevent body scroll when modal is open
   useEffect(() => {
-    if (isModalOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
+    document.body.style.overflow = isModalOpen ? 'hidden' : 'unset';
     return () => {
       document.body.style.overflow = 'unset';
     };
@@ -32,106 +36,108 @@ const ProjectCard = ({ title, date, location, description, image, details, galle
   return (
     <>
       <motion.div
-        className="card-surface cursor-pointer overflow-hidden"
-        whileHover={{ y: -5 }}
+        className="card-surface group cursor-pointer overflow-hidden"
+        whileHover={{ y: -6 }}
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         onClick={() => setIsModalOpen(true)}
       >
-        <div className="relative aspect-video overflow-hidden bg-gray-200">
+        <div className="relative aspect-[4/3] overflow-hidden bg-surface-muted">
+          <div className="absolute inset-x-5 top-5 z-10 h-px bg-gradient-to-r from-transparent via-gold-300 to-transparent" />
           <img
             src={image}
             alt={title}
-            loading={priority ? "eager" : "lazy"}
-            fetchPriority={priority ? "high" : "low"}
+            loading={priority ? 'eager' : 'lazy'}
+            fetchPriority={priority ? 'high' : 'low'}
             decoding="async"
-            className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
+            className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
           />
         </div>
 
-        <div className="p-4">
-          <h3 className="font-bold text-lg text-text-dark mb-2">{title}</h3>
+        <div className="space-y-4 p-6">
+          <div className="flex items-center justify-between gap-4">
+            <span className="section-kicker">Project</span>
+            <span className="text-xs uppercase tracking-[0.24em] text-ink-muted">Open story</span>
+          </div>
 
-          <div className="flex items-center text-sm text-gray-600 mb-2">
-            <FiCalendar className="w-4 h-4 mr-1" />
+          <h3 className="font-serif text-3xl font-semibold leading-none text-text-dark">{title}</h3>
+
+          <div className="flex items-center text-sm text-ink-soft">
+            <FiCalendar className="mr-2 h-4 w-4 text-gold-500" />
             <span>{date}</span>
           </div>
 
-          <div className="flex items-center text-sm text-gray-600 mb-3">
-            <FiMapPin className="w-4 h-4 mr-1" />
+          <div className="flex items-center text-sm text-ink-soft">
+            <FiMapPin className="mr-2 h-4 w-4 text-gold-500" />
             <span>{location}</span>
           </div>
 
-          <p className="text-gray-700 text-sm mb-4 line-clamp-2">{description}</p>
+          <p className="line-clamp-3 text-sm leading-relaxed text-ink-soft">{description}</p>
 
-          <button className="font-semibold text-brand transition-colors hover:text-brand-700">
+          <button className="font-semibold text-brand transition-colors hover:text-gold-500">
             Learn More
           </button>
         </div>
       </motion.div>
 
-      {/* Modal */}
       <AnimatePresence>
         {isModalOpen && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4 overflow-y-auto"
+            className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto bg-brand-950/75 p-4 backdrop-blur-sm"
             onClick={() => setIsModalOpen(false)}
           >
             <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
+              initial={{ scale: 0.96, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              className="bg-white rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto relative my-8"
+              exit={{ scale: 0.96, opacity: 0 }}
+              className="relative my-8 max-h-[90vh] w-full max-w-3xl overflow-y-auto rounded-[28px] border border-gold-300/25 bg-surface shadow-editorial"
               onClick={(e) => e.stopPropagation()}
             >
               <div className="relative">
-                <img
-                  src={image}
-                  alt={title}
-                  className="w-full h-auto rounded-t-lg"
-                />
+                <img src={image} alt={title} className="h-auto w-full rounded-t-[28px]" />
                 <button
                   onClick={() => setIsModalOpen(false)}
-                  className="absolute top-4 right-4 w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-lg hover:bg-gray-100 transition-colors"
+                  className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full bg-surface text-brand-950 shadow-soft transition-colors hover:bg-gold-300"
                 >
-                  <FiX className="w-5 h-5" />
+                  <FiX className="h-5 w-5" />
                 </button>
               </div>
 
-              <div className="p-6">
-                <h2 className="text-2xl font-bold text-text-dark mb-4">{title}</h2>
+              <div className="space-y-5 p-7">
+                <span className="section-kicker">Project Story</span>
+                <h2 className="font-serif text-4xl font-semibold leading-none text-text-dark">{title}</h2>
 
-                <div className="flex items-center text-sm text-gray-600 mb-4">
-                  <FiCalendar className="w-4 h-4 mr-2" />
+                <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-ink-soft">
+                  <FiCalendar className="h-4 w-4 text-gold-500" />
                   <span>{date}</span>
-                  <span className="mx-2">•</span>
-                  <FiMapPin className="w-4 h-4 mr-2" />
+                  <span className="text-gold-500">•</span>
+                  <FiMapPin className="h-4 w-4 text-gold-500" />
                   <span>{location}</span>
                 </div>
 
-                <p className="text-gray-700 mb-4">{description}</p>
+                <p className="leading-relaxed text-ink-soft">{description}</p>
 
                 {details && (
-                  <div className="mb-6">
-                    <h3 className="font-semibold text-lg mb-2">Event Details</h3>
-                    <p className="text-gray-700">{details}</p>
+                  <div className="space-y-2">
+                    <h3 className="font-serif text-2xl font-semibold text-text-dark">Event Details</h3>
+                    <p className="leading-relaxed text-ink-soft">{details}</p>
                   </div>
                 )}
 
                 {gallery && gallery.length > 0 && (
-                  <div>
-                    <h3 className="font-semibold text-lg mb-3">Event Gallery</h3>
-                    <div className="grid grid-cols-3 gap-2">
+                  <div className="space-y-3">
+                    <h3 className="font-serif text-2xl font-semibold text-text-dark">Event Gallery</h3>
+                    <div className="grid grid-cols-2 gap-3 md:grid-cols-3">
                       {gallery.slice(0, 6).map((img, index) => (
                         <img
                           key={index}
                           src={img}
                           alt={`${title} gallery ${index + 1}`}
-                          className="w-full h-20 object-cover rounded cursor-pointer hover:opacity-80 transition-opacity"
+                          className="h-24 w-full cursor-pointer rounded-2xl object-cover transition-opacity hover:opacity-80"
                           onClick={(e) => {
                             e.stopPropagation();
                             setSelectedImage(img);
@@ -147,28 +153,17 @@ const ProjectCard = ({ title, date, location, description, image, details, galle
         )}
       </AnimatePresence>
 
-      {/* Image Lightbox */}
       {selectedImage && (
-        <div
-          className="lightbox-backdrop"
-          onClick={() => setSelectedImage(null)}
-        >
+        <div className="lightbox-backdrop" onClick={() => setSelectedImage(null)}>
           <button
             className="lightbox-close"
             onClick={() => setSelectedImage(null)}
             aria-label="Close"
           >
-            ✕
+            ×
           </button>
-          <div
-            className="lightbox-content"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <img
-              src={selectedImage}
-              alt="Enlarged view"
-              className="lightbox-image"
-            />
+          <div className="lightbox-content" onClick={(e) => e.stopPropagation()}>
+            <img src={selectedImage} alt="Enlarged view" className="lightbox-image" />
           </div>
         </div>
       )}
@@ -180,38 +175,37 @@ const ProjectCard = ({ title, date, location, description, image, details, galle
           left: 0;
           right: 0;
           bottom: 0;
-          background-color: rgba(0, 0, 0, 0.9);
+          background-color: rgba(1, 31, 38, 0.92);
           display: flex;
           align-items: center;
           justify-content: center;
           z-index: 10000;
           padding: 2rem;
           cursor: pointer;
+          backdrop-filter: blur(12px);
         }
 
         .lightbox-close {
           position: fixed;
           top: 1.5rem;
           right: 1.5rem;
-          background: rgba(255, 255, 255, 0.2);
-          border: 2px solid white;
+          background: rgba(255, 253, 249, 0.16);
+          border: 1px solid rgba(233, 180, 76, 0.7);
           color: white;
           font-size: 2rem;
           width: 3rem;
           height: 3rem;
-          border-radius: 50%;
+          border-radius: 999px;
           cursor: pointer;
           display: flex;
           align-items: center;
           justify-content: center;
           z-index: 10001;
           transition: all 0.3s ease;
-          backdrop-filter: blur(10px);
         }
 
         .lightbox-close:hover {
-          background: rgba(255, 255, 255, 0.3);
-          transform: rotate(90deg);
+          background: rgba(233, 180, 76, 0.22);
         }
 
         .lightbox-content {
@@ -227,7 +221,7 @@ const ProjectCard = ({ title, date, location, description, image, details, galle
           max-width: 100%;
           max-height: 90vh;
           object-fit: contain;
-          border-radius: 8px;
+          border-radius: 20px;
           box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5);
         }
       `}</style>
@@ -235,4 +229,4 @@ const ProjectCard = ({ title, date, location, description, image, details, galle
   );
 };
 
-export default ProjectCard; 
+export default ProjectCard;
