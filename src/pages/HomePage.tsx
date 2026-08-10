@@ -46,10 +46,10 @@ export default function HomePage() {
         'Rotaract club of REC is the biggest milestone in my life. The work we did opened new windows and set the path for my future.',
     },
     {
-      name: 'Kiruthika',
-      role: 'Secretary 2024-25',
+      name: 'Shrinidhi',
+      role: 'Secretary 2025-2026',
       quote:
-        'Rotaract enriched me with family-like friendships, a strong network, and growth in confidence, communication, leadership, teamwork, and event management.',
+        'My Rotaract journey has been one of the most beautiful and transformative chapters of my life. It shaped me into the person I am today, giving me the strength, confidence, courage, and ability to stand up for myself and others. As a Secretary, I learnt that true leadership is not about a position, but about people, responsibility and growing together. Rotaract gave me friendships that turned into family, memories that will stay forever and lessons that I will carry throughout my life.',
     },
   ];
 
