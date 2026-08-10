@@ -34,7 +34,7 @@ const TeamPage = () => {
     { name: 'Rtr. Harish Bhuvan S', title: 'Media Head 26-27', image: '/board/Harish Bhuvan S.png' },
     { name: 'Rtr. Yugendran P', title: 'Membership Development Head 26-27', image: '/board/Yugendran P.png' },
     { name: 'Rtr. Yuvasri K', title: 'Associate Membership Development Head 26-27', image: '/board/Yuvasri K.jpg' },
-    { name: 'Rtr. Aadithya R', title: 'Technical Head 26-27', image: '/board/aadithyaraj_rtr_pic.jpg' },
+    { name: 'Rtr. Aadithya R', title: 'Technical Head 26-27', image: '/board/rtr Aadithya Raj.jpeg' },
   ];
 
   const boardCoordinators: typeof coreLeadership = [
