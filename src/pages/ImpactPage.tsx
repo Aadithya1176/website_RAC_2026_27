@@ -38,17 +38,11 @@ const ImpactPage = () => {
   return (
     <div className="min-h-screen bg-background">
       <section className="section-shell editorial-dark section-padding-top">
-        <div className="container-custom grid gap-10 lg:grid-cols-[1fr_0.9fr] lg:items-end">
-          <div>
-            <p className="section-kicker mb-4">Our Impact</p>
-            <h1 className="font-serif text-5xl leading-[0.94] text-white md:text-7xl">
-              Projects documented with clarity, not clutter.
-            </h1>
-          </div>
-          <p className="max-w-2xl text-lg leading-8 text-slate-200">
-            This page reads like a living archive of club work: each event positioned with stronger
-            visual hierarchy, clearer filters, and a more editorial rhythm.
-          </p>
+        <div className="container-custom">
+          <p className="section-kicker mb-4">Our Impact</p>
+          <h1 className="font-serif text-5xl leading-[0.94] text-white md:text-7xl">
+            Projects documented with clarity, not clutter.
+          </h1>
         </div>
       </section>
 

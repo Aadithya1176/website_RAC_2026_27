@@ -52,7 +52,7 @@ const Footer = () => {
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
                 <FiPhoneCall className="h-5 w-5 text-gold-300" />
-                <p className="text-sm text-slate-300">+91 9176163275</p>
+                <p className="text-sm text-slate-300">+91 9043367699</p>
               </div>
               <div className="flex items-center space-x-3">
                 <FiMail className="h-5 w-5 text-gold-300" />
@@ -110,7 +110,7 @@ const Footer = () => {
       <div className="border-t border-gold-300/20">
         <div className="container-custom py-4">
           <div className="flex flex-col items-center justify-between md:flex-row">
-            <p className="text-sm text-slate-300">© 2025 Rotaract Club of REC</p>
+            <p className="text-sm text-slate-300">© 2026 Rotaract Club of REC</p>
             <p className="mt-2 text-sm text-slate-300 md:mt-0">Powered by passion, driven by purpose.</p>
           </div>
         </div>

@@ -51,6 +51,13 @@ const StoryPage = () => {
       description: 'The club is actively growing and contributing towards the community.',
       icon: BsGraphUpArrow,
     },
+    {
+      year: '2026',
+      title: 'Sardar Surjit Singh Sahney Memorial Award',
+      description:
+        'Recognized by MVBB for the highest number of blood donations in the district, and ranked among the top 2 engineering colleges.',
+      icon: FiAward,
+    },
   ];
 
   return (

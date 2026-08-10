@@ -145,4 +145,26 @@ section, [role="region"] {
   .nav-link:focus-visible::after {
     @apply scale-x-100;
   }
+
+  .marquee-track {
+    animation: marquee 26s linear infinite;
+  }
+
+  .marquee-track-slow {
+    animation: marquee 42s linear infinite;
+  }
+
+  .marquee-row:hover .marquee-track,
+  .marquee-row:hover .marquee-track-slow {
+    animation-play-state: paused;
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }
