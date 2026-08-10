@@ -46,7 +46,7 @@ const TeamPage = () => {
     { name: 'Dhiya V', title: 'Club Coordinator 26-27', image: '/core/rtr dhiya.jpg' },
     { name: 'Diksha Nagarajan', title: 'Club Coordinator 26-27', image: '/core/rtr diksha.jpeg' },
     { name: 'Harileena S', title: 'Club Coordinator 26-27', image: '/core/RTR HARILEENA JPG.jpg' },
-    { name: 'Harshini Kathirvel', title: 'Club Coordinator 26-27', image: '' },
+    { name: 'Harshini Kathirvel', title: 'Club Coordinator 26-27', image: '/core/rtr harshini.jpg' },
     { name: 'Harshith R', title: 'Club Coordinator 26-27', image: '/core/rtr harshith.jpg' },
     { name: 'Jaron Roderick S', title: 'Club Coordinator 26-27', image: '/core/rtr jaron.jpg' },
     { name: 'Jayakeerthi S', title: 'Club Coordinator 26-27', image: '/core/Jayakeerthi.jpg' },
