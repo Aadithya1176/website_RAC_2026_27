@@ -74,7 +74,7 @@ export default function HomePage() {
   const heroImages = [
     '/gallery/WhatsApp Image 2025-08-11 at 23.23.53_d9a3a398.jpg',
     '/gallery/IMG_3163.JPG',
-    '/gallery/IMG-20250811-WA0090.jpg',
+    '/gallery/bg 1.jpg',
   ];
 
   const [heroIndex, setHeroIndex] = useState(0);
