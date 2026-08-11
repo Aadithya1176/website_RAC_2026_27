@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { FiUsers, FiAward, FiHeart, FiGlobe, FiArrowRight, FiBriefcase } from 'react-icons/fi';
 import AnimatedCounter from '../components/AnimatedCounter';
 import HeroParticles from '../components/HeroParticles';
+import ImpactConstellation from '../components/ImpactConstellation';
 import { projects } from '../data/projects';
 
 const FLAGSHIP_PROJECTS = [
@@ -19,21 +20,25 @@ const AVENUES = [
     icon: FiUsers,
     title: 'Club Service',
     copy: 'Strengthening our own fellowship, leadership pipeline, and internal culture.',
+    tone: 'bg-brand-950',
   },
   {
     icon: FiHeart,
     title: 'Community Service',
     copy: "Hands-on local action, from blood drives to clean-ups that meet real need.",
+    tone: 'bg-brand-800',
   },
   {
     icon: FiGlobe,
     title: 'International Service',
     copy: 'Connecting with Rotaract clubs worldwide and championing global causes.',
+    tone: 'bg-brand-600',
   },
   {
     icon: FiBriefcase,
     title: 'Professional Service',
     copy: 'Building career-ready skills through mentorship, workshops, and real exposure.',
+    tone: 'bg-brand-400',
   },
 ];
 
@@ -122,9 +127,9 @@ export default function HomePage() {
 
   const statsData = [
     { icon: FiHeart, number: 5000, suffix: '+', label: 'Lives impacted', big: true },
-    { icon: FiAward, number: projectCount, suffix: '+', label: 'Projects completed', wide: true },
-    { icon: FiUsers, number: 50, suffix: '+', label: 'Active members' },
-    { icon: FiGlobe, number: 4, suffix: '', label: 'Avenues of service' },
+    { icon: FiAward, number: projectCount, suffix: '+', label: 'Projects completed', wide: true, tone: 'bg-brand-800' },
+    { icon: FiUsers, number: 50, suffix: '+', label: 'Active members', tone: 'bg-brand-700' },
+    { icon: FiGlobe, number: 4, suffix: '', label: 'Avenues of service', tone: 'bg-brand-600' },
   ];
 
   return (
@@ -192,18 +197,8 @@ export default function HomePage() {
           </div>
         </motion.div>
 
-        <div className="container-custom relative z-10 grid items-end gap-14 py-28">
+        <div className="container-custom relative z-10 grid items-end gap-14 py-20">
           <div className="max-w-4xl hero-text-shadow">
-            <motion.div
-              initial={{ opacity: 0, x: -12 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-              className="mb-6 flex items-center gap-3"
-            >
-              <span className="h-px w-10 bg-gold-300" />
-              <p className="section-kicker">Rotaract Club of REC</p>
-            </motion.div>
-
             <h1 className="font-serif text-5xl leading-[0.92] text-white md:text-7xl lg:text-[6.2rem]">
               <AnimatedHeadline text="Driven by service." startDelay={0.15} />
               <br />
@@ -286,17 +281,22 @@ export default function HomePage() {
                 <motion.div
                   key={item.label}
                   className={`editorial-panel relative overflow-hidden p-7 ${spanClasses} ${
-                    item.big ? 'flex flex-col justify-end bg-brand-950 text-white' : ''
+                    item.big ? `flex flex-col justify-end bg-brand-950 text-white` : item.tone ? `${item.tone} text-white` : ''
                   }`}
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.08 }}
                 >
-                  <item.icon className={`relative mb-6 h-8 w-8 ${item.big ? 'text-gold-300' : 'text-brand'}`} />
+                  {item.big && (
+                    <div className="pointer-events-none absolute inset-0 opacity-80">
+                      <ImpactConstellation />
+                    </div>
+                  )}
+                  <item.icon className={`relative mb-6 h-8 w-8 ${item.big || item.tone ? 'text-gold-300' : 'text-brand'}`} />
                   <div
                     className={`relative mb-3 flex items-baseline gap-1 font-serif ${
-                      item.big ? 'text-6xl text-white' : 'text-5xl text-text-dark'
+                      item.big ? 'text-6xl text-white' : item.tone ? 'text-5xl text-white' : 'text-5xl text-text-dark'
                     }`}
                   >
                     <AnimatedCounter end={item.number} />
@@ -304,7 +304,7 @@ export default function HomePage() {
                   </div>
                   <p
                     className={`relative text-sm uppercase tracking-[0.22em] ${
-                      item.big ? 'text-slate-200' : 'text-ink-soft'
+                      item.big || item.tone ? 'text-slate-200' : 'text-ink-soft'
                     }`}
                   >
                     {item.label}
@@ -333,22 +333,18 @@ export default function HomePage() {
             {AVENUES.map((avenue, index) => (
               <motion.div
                 key={avenue.title}
-                className="group relative bg-surface p-8 transition-colors duration-500 hover:bg-brand-950"
+                className={`group relative ${avenue.tone} p-8 transition-transform duration-500 hover:-translate-y-1`}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.08 }}
               >
-                <span className="mb-8 block font-serif text-sm text-gold-500 transition-colors duration-500 group-hover:text-gold-300">
+                <span className="mb-8 block font-serif text-sm text-gold-300 transition-colors duration-500 group-hover:text-gold-200">
                   0{index + 1}
                 </span>
-                <avenue.icon className="mb-6 h-8 w-8 text-brand transition-colors duration-500 group-hover:text-gold-300" />
-                <h3 className="mb-3 font-serif text-2xl text-text-dark transition-colors duration-500 group-hover:text-white">
-                  {avenue.title}
-                </h3>
-                <p className="text-sm leading-6 text-ink-soft transition-colors duration-500 group-hover:text-slate-300">
-                  {avenue.copy}
-                </p>
+                <avenue.icon className="mb-6 h-8 w-8 text-gold-300 transition-colors duration-500 group-hover:text-gold-200" />
+                <h3 className="mb-3 font-serif text-2xl text-white">{avenue.title}</h3>
+                <p className="text-sm leading-6 text-slate-200">{avenue.copy}</p>
               </motion.div>
             ))}
           </div>
