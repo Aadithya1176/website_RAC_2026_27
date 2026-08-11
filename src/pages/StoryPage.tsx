@@ -53,9 +53,14 @@ const StoryPage = () => {
     },
     {
       year: '2026',
-      title: 'Sardar Surjit Singh Sahney Memorial Award',
-      description:
-        'Recognized by MVBB for the highest number of blood donations in the district, and ranked among the top 2 engineering colleges.',
+      title: '2nd Top most Engineering College by MVBB',
+      description: 'Recognized by MVBB among the top engineering colleges.',
+      icon: FiAward,
+    },
+    {
+      year: '2026',
+      title: 'Sardar Surjit Singh Sahney Memorial Award for Highest number of blood donations in the district',
+      description: 'Honored for recording the highest number of blood donations in the district.',
       icon: FiAward,
     },
   ];
@@ -135,7 +140,7 @@ const StoryPage = () => {
             <div className="space-y-10">
               {timeline.map((item, index) => (
                 <motion.div
-                  key={item.year}
+                  key={`${item.year}-${item.title}`}
                   className={`relative grid gap-6 md:grid-cols-2 ${index % 2 === 0 ? '' : 'md:[&>*:first-child]:order-2'}`}
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
