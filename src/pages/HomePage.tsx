@@ -73,7 +73,6 @@ function AnimatedHeadline({ text, startDelay = 0 }: { text: string; startDelay?:
 export default function HomePage() {
   const heroImages = [
     '/gallery/IMG_0424.jpg',
-    '/gallery/WhatsApp Image 2025-08-11 at 23.23.53_d9a3a398.jpg',
     '/gallery/IMG_3163.JPG',
     '/gallery/bg 1.jpg',
   ];
