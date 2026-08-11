@@ -106,16 +106,10 @@ export default function HomePage() {
 
   const testimonials = [
     {
-      name: 'Bhavanishraj',
-      role: 'President 2024-25',
+      name: 'Nandhini',
+      role: 'Vice President 2025-2026',
       quote:
-        'Rotaract strengthened my ability to handle pressure, communicate confidently through public speaking, lead with responsibility and manage teams effectively.',
-    },
-    {
-      name: 'Rethinaath',
-      role: 'Vice President 2024-25',
-      quote:
-        'Rotaract club of REC is the biggest milestone in my life. The work we did opened new windows and set the path for my future.',
+        'The best part wasn’t what we accomplished, but the person I became while making it happen.',
     },
     {
       name: 'Shrinidhi',
