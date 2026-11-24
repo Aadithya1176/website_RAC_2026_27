@@ -106,7 +106,7 @@ const TeamPage = () => {
             </div>
             <div className="flex flex-col justify-center">
               <p className="section-kicker mb-3">Faculty Coordinator</p>
-              <h2 className="font-serif text-4xl font-semibold text-text-dark md:text-5xl">
+              <h2 className="break-words font-serif text-4xl font-semibold text-text-dark md:text-5xl">
                 {facultyCoordinator.name}
               </h2>
               <div className="gold-divider my-5" />

@@ -34,7 +34,7 @@ const Navbar = () => {
     <motion.nav
       className={`fixed left-0 right-0 top-4 z-50 mx-auto w-[95%] max-w-6xl rounded-full border text-white backdrop-blur-xl transition-colors duration-500 ${
         isScrolled
-          ? 'border-gold-300/60 bg-brand-900/92 shadow-editorial'
+          ? 'border-gold-300/60 bg-brand-900/[0.92] shadow-editorial'
           : 'border-white/20 bg-transparent'
       }`}
       initial={{ y: 0 }}
@@ -56,11 +56,12 @@ const Navbar = () => {
               loading="eager"
               className="w-12 h-12 md:w-20 md:h-20 object-contain"
             />
-            <span className="hidden text-lg font-semibold tracking-wide md:text-xl sm:block">Rotaract Club of REC</span>
+            <span className="hidden whitespace-nowrap text-lg font-semibold tracking-wide md:text-xl sm:block">Rotaract Club of REC</span>
             <span className="block text-lg font-semibold sm:hidden">RACREC</span>
           </Link>
 
-          <div className="hidden md:flex items-center space-x-8">
+          {/* Full link row from lg up; tablets use the hamburger menu so the bar doesn't cramp/wrap */}
+          <div className="hidden lg:flex items-center space-x-8">
             <Link to="/" className="nav-link hover:text-gold-300">
               Home
             </Link>
@@ -108,8 +109,10 @@ const Navbar = () => {
           </div>
 
           <button
-            className="rounded-full border border-white/20 p-2 text-white transition-colors hover:border-gold-300 hover:text-gold-300 md:hidden"
+            className="rounded-full border border-white/20 p-2.5 text-white transition-colors hover:border-gold-300 hover:text-gold-300 lg:hidden"
             onClick={toggleMenu}
+            aria-label={isOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={isOpen}
           >
             {isOpen ? <FiX className="w-6 h-6" /> : <FiMenu className="w-6 h-6" />}
           </button>
@@ -123,7 +126,7 @@ const Navbar = () => {
             initial={{ opacity: 0, x: '100%' }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: '100%' }}
-            className="fixed right-4 top-20 max-h-[calc(100vh-6rem)] w-64 overflow-y-auto rounded-[24px] border border-gold-300/30 bg-brand-900/96 shadow-editorial backdrop-blur-xl md:hidden"
+            className="fixed right-4 top-20 max-h-[calc(100vh-6rem)] w-64 overflow-y-auto rounded-[24px] border border-gold-300/30 bg-brand-900 shadow-editorial lg:hidden"
           >
             <div className="p-6 space-y-4">
               <Link

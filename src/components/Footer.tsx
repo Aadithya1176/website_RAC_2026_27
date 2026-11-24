@@ -27,19 +27,19 @@ const Footer = () => {
 
           <div className="space-y-4">
             <h3 className="font-serif text-2xl font-semibold">Quick Links</h3>
-            <ul className="space-y-2">
-              <li><Link to="/" className="text-slate-300 transition-colors hover:text-gold-300">Home</Link></li>
-              <li><Link to="/about-us" className="text-slate-300 transition-colors hover:text-gold-300">About Us</Link></li>
-              <li><Link to="/story" className="text-slate-300 transition-colors hover:text-gold-300">Our Story</Link></li>
-              <li><Link to="/team" className="text-slate-300 transition-colors hover:text-gold-300">Our Team</Link></li>
-              <li><Link to="/impact" className="text-slate-300 transition-colors hover:text-gold-300">Projects</Link></li>
-              <li><Link to="/gallery" className="text-slate-300 transition-colors hover:text-gold-300">Gallery</Link></li>
+            <ul className="space-y-0.5 md:space-y-2">
+              <li><Link to="/" className="inline-block py-1.5 text-slate-300 transition-colors hover:text-gold-300 md:py-0">Home</Link></li>
+              <li><Link to="/about-us" className="inline-block py-1.5 text-slate-300 transition-colors hover:text-gold-300 md:py-0">About Us</Link></li>
+              <li><Link to="/story" className="inline-block py-1.5 text-slate-300 transition-colors hover:text-gold-300 md:py-0">Our Story</Link></li>
+              <li><Link to="/team" className="inline-block py-1.5 text-slate-300 transition-colors hover:text-gold-300 md:py-0">Our Team</Link></li>
+              <li><Link to="/impact" className="inline-block py-1.5 text-slate-300 transition-colors hover:text-gold-300 md:py-0">Projects</Link></li>
+              <li><Link to="/gallery" className="inline-block py-1.5 text-slate-300 transition-colors hover:text-gold-300 md:py-0">Gallery</Link></li>
               <li>
                 <a
                   href="/old_site/index.html"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-slate-300 transition-colors hover:text-gold-300"
+                  className="inline-block py-1.5 text-slate-300 transition-colors hover:text-gold-300 md:py-0"
                 >
                   Old Website
                 </a>
@@ -52,13 +52,15 @@ const Footer = () => {
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
                 <FiPhoneCall className="h-5 w-5 text-gold-300" />
-                <p className="text-sm text-slate-300">+91 9043367699</p>
+                <a href="tel:+919043367699" className="inline-block py-1.5 text-sm text-slate-300 transition-colors hover:text-gold-300 md:py-0">
+                  +91 9043367699
+                </a>
               </div>
               <div className="flex items-center space-x-3">
                 <FiMail className="h-5 w-5 text-gold-300" />
                 <a
                   href="mailto:rotaract@rajalakshmi.edu.in"
-                  className="text-slate-300 transition-colors hover:text-gold-300"
+                  className="inline-block py-1.5 text-slate-300 transition-colors hover:text-gold-300 md:py-0"
                 >
                   rotaract@rajalakshmi.edu.in
                 </a>
@@ -81,6 +83,7 @@ const Footer = () => {
                 href="https://chat.whatsapp.com/EzRToM7mFcRBHNdfvJzis4"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="WhatsApp"
                 className="flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-white/5 transition-colors duration-300 hover:border-gold-300 hover:text-gold-300"
               >
                 <BsWhatsapp className="h-6 w-6" />
@@ -89,6 +92,7 @@ const Footer = () => {
                 href="https://www.instagram.com/rotaractrec/"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Instagram"
                 className="flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-white/5 transition-colors duration-300 hover:border-gold-300 hover:text-gold-300"
               >
                 <FiInstagram className="h-6 w-6" />
@@ -97,6 +101,7 @@ const Footer = () => {
                 href="https://www.linkedin.com/company/rotaract-rec/"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="LinkedIn"
                 className="flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-white/5 transition-colors duration-300 hover:border-gold-300 hover:text-gold-300"
               >
                 <FiLinkedin className="h-6 w-6" />
@@ -110,7 +115,7 @@ const Footer = () => {
       <div className="border-t border-gold-300/20">
         <div className="container-custom py-4">
           <div className="flex flex-col items-center justify-between md:flex-row">
-            <p className="text-sm text-slate-300">© 2026 Rotaract Club of REC</p>
+            <p className="text-sm text-slate-300">Â© 2026 Rotaract Club of REC</p>
             <p className="mt-2 text-sm text-slate-300 md:mt-0">Powered by passion, driven by purpose.</p>
           </div>
         </div>

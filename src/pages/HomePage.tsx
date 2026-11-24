@@ -185,16 +185,21 @@ export default function HomePage() {
           </div>
         </div>
 
-        <div className="absolute bottom-8 left-0 right-0 z-10 flex items-center justify-center gap-2">
+        {/* Each dot sits in a larger transparent button so it's easy to tap; px-1 keeps the 8px visual gap */}
+        <div className="absolute bottom-4 left-0 right-0 z-10 flex items-center justify-center">
           {heroImages.map((_, i) => (
             <button
               key={i}
               aria-label={`Go to slide ${i + 1}`}
               onClick={() => setHeroIndex(i)}
-              className={`h-2 rounded-full transition-all duration-300 ${
-                i === heroIndex ? 'w-12 bg-gold-300' : 'w-5 bg-white/40 hover:bg-white/70'
-              }`}
-            />
+              className="group px-1 py-4"
+            >
+              <span
+                className={`block h-2 rounded-full transition-all duration-300 ${
+                  i === heroIndex ? 'w-12 bg-gold-300' : 'w-5 bg-white/40 group-hover:bg-white/70'
+                }`}
+              />
+            </button>
           ))}
         </div>
       </section>
