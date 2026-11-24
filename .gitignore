@@ -39,3 +39,6 @@ ngrok.zip
 
 # Vercel
 .vercel
+
+# Local Claude Code settings
+.claude/
