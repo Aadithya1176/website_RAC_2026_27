@@ -1,4 +1,4 @@
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FiUsers, FiAward, FiHeart, FiGlobe, FiArrowRight, FiBriefcase } from 'react-icons/fi';
@@ -42,12 +42,6 @@ const AVENUES = [
   },
 ];
 
-const HERO_FACTS = [
-  { value: '50+', label: 'Active members driving the mission forward' },
-  { value: '13+', label: 'Projects delivered so far this tenure' },
-  { value: '5000+', label: 'Lives touched through direct service' },
-];
-
 const headlineContainer = (startDelay: number) => ({
   hidden: {},
   visible: { transition: { staggerChildren: 0.06, delayChildren: startDelay } },
@@ -83,7 +77,6 @@ export default function HomePage() {
   ];
 
   const [heroIndex, setHeroIndex] = useState(0);
-  const [factIndex, setFactIndex] = useState(0);
   const [projectCount, setProjectCount] = useState(0);
 
   useEffect(() => {
@@ -97,13 +90,6 @@ export default function HomePage() {
     return () => clearInterval(intervalId);
   }, [heroImages.length]);
 
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      setFactIndex((prev) => (prev + 1) % HERO_FACTS.length);
-    }, 3200);
-    return () => clearInterval(intervalId);
-  }, []);
-
   const testimonials = [
     {
       name: 'Nandhini',
@@ -116,6 +102,18 @@ export default function HomePage() {
       role: 'Secretary 2025-2026',
       quote:
         'My Rotaract journey has been one of the most beautiful and transformative chapters of my life. It shaped me into the person I am today, giving me the strength, confidence, courage, and ability to stand up for myself and others.',
+    },
+    {
+      name: 'Sivasooryaa Subburaj',
+      role: 'Club Advisor',
+      quote:
+        'Once a Rotaractor, always a Rotaractor.!! Rotaract gave me my first mic, my first platform, and most importantly, a chance to rediscover myself. Forever grateful for the journey.',
+    },
+    {
+      name: 'Sanjit M',
+      role: 'IPP 2026-2027 & President 2025-2026',
+      quote:
+        'My Rotaract journey has been a remarkable path of growth, purpose, and leadership. It has taught me to believe in myself, embrace responsibilities, and lead with empathy and courage. As President, I hope to inspire others, create meaningful opportunities, and make this journey memorable for every member of our Rotaract family.',
     },
   ];
 
@@ -150,46 +148,6 @@ export default function HomePage() {
         <div className="pointer-events-none absolute inset-0 z-[5]">
           <HeroParticles />
         </div>
-
-        <motion.div
-          initial={{ opacity: 0, x: 30 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          className="editorial-panel absolute right-4 top-24 z-10 hidden w-72 border-white/15 bg-brand-950/45 p-7 text-white backdrop-blur-md sm:right-6 sm:top-28 md:block lg:right-10 lg:top-32 lg:w-80 lg:p-8"
-        >
-          <div className="mb-6 flex items-center justify-between">
-            <img src="/club_logo_1_1.png" alt="RACREC logo" className="h-14 w-14 object-contain lg:h-16 lg:w-16" />
-            <span className="section-kicker">This tenure</span>
-          </div>
-          <div className="gold-divider mb-5" />
-
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={factIndex}
-              initial={{ opacity: 0, y: 14 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -14 }}
-              transition={{ duration: 0.5 }}
-              className="min-h-[7.5rem]"
-            >
-              <p className="font-serif text-6xl leading-none text-gold-300">
-                {HERO_FACTS[factIndex].value}
-              </p>
-              <p className="mt-4 text-sm leading-6 text-slate-200">{HERO_FACTS[factIndex].label}</p>
-            </motion.div>
-          </AnimatePresence>
-
-          <div className="mt-6 flex gap-2">
-            {HERO_FACTS.map((_, i) => (
-              <span
-                key={i}
-                className={`h-1.5 rounded-full transition-all duration-300 ${
-                  i === factIndex ? 'w-6 bg-gold-300' : 'w-1.5 bg-white/30'
-                }`}
-              />
-            ))}
-          </div>
-        </motion.div>
 
         <div className="container-custom relative z-10 grid items-end gap-14 py-20">
           <div className="max-w-4xl hero-text-shadow">
