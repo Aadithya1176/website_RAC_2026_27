@@ -11,7 +11,8 @@
   
   body {
     @apply bg-background text-text-dark font-sans antialiased;
-    contain: layout style paint;
+    /* No `contain` here: it makes body the containing block for position:fixed,
+       so modals/lightboxes would anchor to the page top instead of the viewport. */
     background-image:
       radial-gradient(circle at top left, rgba(233, 180, 76, 0.08), transparent 28%),
       linear-gradient(180deg, rgba(255, 253, 249, 0.96), rgba(245, 240, 232, 0.92));

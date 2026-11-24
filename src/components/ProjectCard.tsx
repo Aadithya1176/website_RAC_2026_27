@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiX, FiCalendar, FiMapPin } from 'react-icons/fi';
 
@@ -9,7 +10,6 @@ interface ProjectCardProps {
   description: string;
   image: string;
   details?: string;
-  gallery?: string[];
   priority?: boolean;
   chairperson?: string;
   focusArea?: string;
@@ -25,7 +25,6 @@ const ProjectCard = ({
   description,
   image,
   details,
-  gallery,
   priority = false,
   chairperson,
   focusArea,
@@ -90,51 +89,76 @@ const ProjectCard = ({
 
           <p className="line-clamp-3 text-sm leading-relaxed text-ink-soft">{description}</p>
 
-          <button className="font-semibold text-brand transition-colors hover:text-gold-500">
+          {/* -my-2/py-2 enlarges the tap area without shifting the card layout */}
+          <button className="-my-2 py-2 font-semibold text-brand transition-colors hover:text-gold-500">
             Learn More
           </button>
         </div>
       </motion.div>
 
+      {/* Portal to <body> so the overlay isn't trapped by transformed (animated) ancestors */}
+      {createPortal(
       <AnimatePresence>
         {isModalOpen && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto bg-brand-950/75 p-4 backdrop-blur-sm"
-            onClick={() => setIsModalOpen(false)}
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-brand-950/75 p-4 backdrop-blur-sm md:p-8"
+            onClick={(e) => {
+              // React events bubble through portals to the card, which would reopen the modal
+              e.stopPropagation();
+              setIsModalOpen(false);
+            }}
           >
             <motion.div
               initial={{ scale: 0.96, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.96, opacity: 0 }}
-              className="relative my-8 max-h-[90vh] w-full max-w-3xl overflow-y-auto rounded-[28px] border border-gold-300/25 bg-surface shadow-editorial"
+              className="relative grid max-h-[calc(100dvh-2rem)] w-full max-w-5xl overflow-hidden rounded-[28px] border border-gold-300/25 bg-surface shadow-editorial md:max-h-[calc(100dvh-4rem)] md:min-h-[440px] md:grid-cols-2"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="relative">
-                <img src={image} alt={title} className="h-auto w-full rounded-t-[28px]" />
-                <button
-                  onClick={() => setIsModalOpen(false)}
-                  className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full bg-surface text-brand-950 shadow-soft transition-colors hover:bg-gold-300"
-                >
-                  <FiX className="h-5 w-5" />
-                </button>
+              {/* Full, uncropped photo; a blurred copy fills the letterbox space behind it */}
+              <div className="relative flex items-center justify-center overflow-hidden bg-brand-950">
+                <img
+                  src={image}
+                  alt=""
+                  aria-hidden="true"
+                  className="pointer-events-none absolute inset-0 h-full w-full scale-110 object-cover opacity-50 blur-2xl"
+                />
+                <img
+                  src={image}
+                  alt={title}
+                  className="relative max-h-[38dvh] w-full cursor-zoom-in object-contain md:absolute md:inset-0 md:h-full md:max-h-none"
+                  onClick={() => setSelectedImage(image)}
+                />
               </div>
 
-              <div className="space-y-5 p-7">
-                <span className="section-kicker">Project Story</span>
-                <h2 className="font-serif text-4xl font-semibold leading-none text-text-dark">{title}</h2>
+              <button
+                onClick={() => setIsModalOpen(false)}
+                aria-label="Close"
+                className="absolute right-4 top-4 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-surface text-brand-950 shadow-soft transition-colors hover:bg-gold-300"
+              >
+                <FiX className="h-5 w-5" />
+              </button>
 
-                <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-ink-soft">
-                  <FiCalendar className="h-4 w-4 text-gold-500" />
-                  <span>{date}</span>
-                  <span className="text-gold-500">•</span>
-                  <FiMapPin className="h-4 w-4 text-gold-500" />
-                  <span>{location}</span>
+              {/* Mobile-only scroll fallback for very short screens; desktop fits without scrolling */}
+              <div className="flex min-h-0 flex-col gap-4 overflow-y-auto p-6 md:overflow-hidden md:p-8 md:pr-16">
+                <span className="section-kicker">Project Story</span>
+                <h2 className="font-serif text-3xl font-semibold leading-none text-text-dark md:text-4xl">{title}</h2>
+
+                <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-ink-soft">
+                  <span className="flex items-center gap-2">
+                    <FiCalendar className="h-4 w-4 shrink-0 text-gold-500" />
+                    {date}
+                  </span>
+                  <span className="flex items-center gap-2">
+                    <FiMapPin className="h-4 w-4 shrink-0 text-gold-500" />
+                    {location}
+                  </span>
                 </div>
 
-                <p className="leading-relaxed text-ink-soft">{description}</p>
+                <p className="text-sm leading-relaxed text-ink-soft">{details || description}</p>
 
                 {(chairperson || focusArea) && (
                   <dl className="space-y-1 text-sm">
@@ -156,48 +180,30 @@ const ProjectCard = ({
                 {stats.length > 0 && (
                   <div className="grid grid-cols-3 gap-3">
                     {stats.map((s) => (
-                      <div key={s.label} className="rounded-2xl border border-border bg-surface-muted p-3 text-center">
-                        <div className="font-serif text-2xl text-brand">{s.value}</div>
-                        <div className="mt-1 text-[0.65rem] uppercase tracking-[0.16em] text-ink-soft">{s.label}</div>
+                      <div key={s.label} className="rounded-2xl border border-border bg-surface-muted px-2 py-3 text-center">
+                        <div className="font-serif text-2xl leading-none text-brand">{s.value}</div>
+                        <div className="mt-1 text-[0.6rem] uppercase tracking-[0.08em] text-ink-soft sm:text-[0.65rem] sm:tracking-[0.16em]">{s.label}</div>
                       </div>
                     ))}
                   </div>
                 )}
 
-                {details && (
-                  <div className="space-y-2">
-                    <h3 className="font-serif text-2xl font-semibold text-text-dark">Event Details</h3>
-                    <p className="leading-relaxed text-ink-soft">{details}</p>
-                  </div>
-                )}
-
-                {gallery && gallery.length > 0 && (
-                  <div className="space-y-3">
-                    <h3 className="font-serif text-2xl font-semibold text-text-dark">Event Gallery</h3>
-                    <div className="grid grid-cols-2 gap-3 md:grid-cols-3">
-                      {gallery.slice(0, 6).map((img, index) => (
-                        <img
-                          key={index}
-                          src={img}
-                          alt={`${title} gallery ${index + 1}`}
-                          className="h-24 w-full cursor-pointer rounded-2xl object-cover transition-opacity hover:opacity-80"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            setSelectedImage(img);
-                          }}
-                        />
-                      ))}
-                    </div>
-                  </div>
-                )}
               </div>
             </motion.div>
           </motion.div>
         )}
-      </AnimatePresence>
+      </AnimatePresence>,
+      document.body
+      )}
 
-      {selectedImage && (
-        <div className="lightbox-backdrop" onClick={() => setSelectedImage(null)}>
+      {selectedImage && createPortal(
+        <div
+          className="lightbox-backdrop"
+          onClick={(e) => {
+            e.stopPropagation();
+            setSelectedImage(null);
+          }}
+        >
           <button
             className="lightbox-close"
             onClick={() => setSelectedImage(null)}
@@ -208,7 +214,8 @@ const ProjectCard = ({
           <div className="lightbox-content" onClick={(e) => e.stopPropagation()}>
             <img src={selectedImage} alt="Enlarged view" className="lightbox-image" />
           </div>
-        </div>
+        </div>,
+        document.body
       )}
 
       <style>{`
