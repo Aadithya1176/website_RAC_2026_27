@@ -9,7 +9,13 @@ const ImpactPage = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const formattedProjects = staticProjects.map((p: any) => ({
+    const toTime = (d?: string) => {
+      const [dd, mm, yyyy] = (d ?? '').split('-').map(Number);
+      return dd && mm && yyyy ? new Date(yyyy, mm - 1, dd).getTime() : Number.MAX_SAFE_INTEGER;
+    };
+    const sortedProjects = [...staticProjects].sort((a, b) => toTime(a.eventDate) - toTime(b.eventDate));
+
+    const formattedProjects = sortedProjects.map((p: any) => ({
       id: p.id,
       title: p.title,
       date: p.eventDate || (p.createdAt ? new Date(p.createdAt).toLocaleDateString('en-GB').replace(/\//g, '-') : 'Recent'),
@@ -20,6 +26,11 @@ const ImpactPage = () => {
       details: p.description,
       isSignature: p.isSignature,
       status: p.status,
+      chairperson: p.chairperson,
+      focusArea: p.focusArea,
+      membersAttended: p.membersAttended,
+      beneficiaries: p.beneficiaries,
+      manHours: p.manHours,
     }));
     setProjects(formattedProjects);
     setLoading(false);
@@ -34,6 +45,9 @@ const ImpactPage = () => {
   ];
 
   const filteredProjects = activeFilter === 'all' ? projects : projects.filter((project) => project.category === activeFilter);
+
+  const totalBeneficiaries = staticProjects.reduce((sum, p) => sum + (p.beneficiaries ?? 0), 0);
+  const totalManHours = staticProjects.reduce((sum, p) => sum + (p.manHours ?? 0), 0);
 
   return (
     <div className="min-h-screen bg-background">
@@ -107,10 +121,10 @@ const ImpactPage = () => {
 
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4">
             {[
-              { number: projects.length, label: 'Total Projects' },
-              { number: 5000, label: 'Lives Impacted' },
-              { number: 49, label: 'Volunteers' },
-              { number: 15, label: 'Years in Service' },
+              { number: projects.length, label: 'Total Projects', plus: false },
+              { number: totalBeneficiaries, label: 'Beneficiaries', plus: false },
+              { number: totalManHours, label: 'Man Hours', plus: false },
+              { number: 15, label: 'Years in Service', plus: true },
             ].map((stat, index) => (
               <motion.div
                 key={stat.label}
@@ -120,7 +134,7 @@ const ImpactPage = () => {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.08 }}
               >
-                <div className="font-serif text-5xl text-brand">{stat.number}+</div>
+                <div className="font-serif text-5xl text-brand">{stat.number.toLocaleString('en-IN')}{stat.plus ? '+' : ''}</div>
                 <p className="mt-3 text-sm uppercase tracking-[0.22em] text-ink-soft">{stat.label}</p>
               </motion.div>
             ))}

@@ -11,6 +11,11 @@ interface ProjectCardProps {
   details?: string;
   gallery?: string[];
   priority?: boolean;
+  chairperson?: string;
+  focusArea?: string;
+  membersAttended?: number;
+  beneficiaries?: number;
+  manHours?: number;
 }
 
 const ProjectCard = ({
@@ -22,7 +27,17 @@ const ProjectCard = ({
   details,
   gallery,
   priority = false,
+  chairperson,
+  focusArea,
+  membersAttended,
+  beneficiaries,
+  manHours,
 }: ProjectCardProps) => {
+  const stats = [
+    { label: 'Members Attended', value: membersAttended },
+    { label: 'Beneficiaries', value: beneficiaries },
+    { label: 'Man Hours', value: manHours },
+  ].filter((s) => s.value !== undefined);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
@@ -120,6 +135,34 @@ const ProjectCard = ({
                 </div>
 
                 <p className="leading-relaxed text-ink-soft">{description}</p>
+
+                {(chairperson || focusArea) && (
+                  <dl className="space-y-1 text-sm">
+                    {chairperson && (
+                      <div className="flex flex-wrap gap-x-2">
+                        <dt className="font-semibold text-text-dark">Chairperson:</dt>
+                        <dd className="text-ink-soft">{chairperson}</dd>
+                      </div>
+                    )}
+                    {focusArea && (
+                      <div className="flex flex-wrap gap-x-2">
+                        <dt className="font-semibold text-text-dark">Focus Area:</dt>
+                        <dd className="text-ink-soft">{focusArea}</dd>
+                      </div>
+                    )}
+                  </dl>
+                )}
+
+                {stats.length > 0 && (
+                  <div className="grid grid-cols-3 gap-3">
+                    {stats.map((s) => (
+                      <div key={s.label} className="rounded-2xl border border-border bg-surface-muted p-3 text-center">
+                        <div className="font-serif text-2xl text-brand">{s.value}</div>
+                        <div className="mt-1 text-[0.65rem] uppercase tracking-[0.16em] text-ink-soft">{s.label}</div>
+                      </div>
+                    ))}
+                  </div>
+                )}
 
                 {details && (
                   <div className="space-y-2">
